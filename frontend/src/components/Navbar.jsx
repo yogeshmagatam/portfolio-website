@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
-import { useAuth } from '../contexts/AuthContext';
 import DarkModeToggle from './DarkModeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { isAuthenticated, logout } = useAuth();
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -54,31 +52,6 @@ const Navbar = () => {
             
                         {/* Dark Mode Toggle */}
             <DarkModeToggle />
-            
-            {/* Admin Links */}
-            {isAuthenticated ? (
-              <div className="flex items-center space-x-4">
-                <Link
-                  to="/admin/dashboard"
-                  className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
-                >
-                  Dashboard
-                </Link>
-                <button
-                  onClick={logout}
-                  className="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
-                >
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <Link
-                to="/admin/login"
-                className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
-                >
-                Admin
-              </Link>
-            )}
           </div>
 
           {/* Mobile menu button */}
@@ -118,35 +91,7 @@ const Navbar = () => {
                   </Link>
                 ))}
                 
-                {/* Mobile Admin Links */}
-                {isAuthenticated ? (
-                  <div className="pt-2 border-t border-gray-200">
-                    <Link
-                      to="/admin/dashboard"
-                      onClick={() => setIsOpen(false)}
-                      className="block px-4 py-2 text-gray-600 hover:text-primary-600"
-                    >
-                      Dashboard
-                    </Link>
-                    <button
-                      onClick={() => {
-                        logout();
-                        setIsOpen(false);
-                      }}
-                      className="block w-full text-left px-4 py-2 text-red-600 hover:text-red-700"
-                    >
-                      Logout
-                    </button>
-                  </div>
-                ) : (
-                  <Link
-                    to="/admin/login"
-                    onClick={() => setIsOpen(false)}
-                    className="block px-4 py-2 text-gray-600 hover:text-primary-600"
-                  >
-                    Admin
-                  </Link>
-                )}
+
               </div>
             </motion.div>
           )}

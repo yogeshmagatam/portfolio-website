@@ -623,7 +623,20 @@ const Home = () => {
             
             <div className="max-w-4xl mx-auto">
               {[
-                 Still in search
+                {
+                  company: "Still in Search",
+                  position: "Full Stack Developer",
+                  period: "2025 - Present",
+                  description: "Actively seeking opportunities to apply my skills in React, Python, and IoT development. Passionate about building innovative solutions and contributing to meaningful projects.",
+                  technologies: ["React", "Python", "Flask", "MongoDB", "Raspberry Pi"]
+                },
+                {
+                  company: "Student Projects",
+                  position: "Software Developer",
+                  period: "2022 - 2024",
+                  description: "Built innovative projects including Digital Certificate Management System and Pi Ads application. Focused on practical problem-solving and modern web technologies.",
+                  technologies: ["React", "Flask", "Python", "MongoDB", "Raspberry Pi"]
+                }
               ].map((exp, index) => (
                 <motion.div
                   key={index}
