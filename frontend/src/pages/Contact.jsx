@@ -70,9 +70,9 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-gray-800">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -80,10 +80,10 @@ const Contact = () => {
             variants={containerVariants}
             className="text-center mb-12"
           >
-            <motion.h1 variants={itemVariants} className="mb-6">
+            <motion.h1 variants={itemVariants} className="mb-6 text-gray-900 dark:text-white">
               Get In <span className="gradient-text">Touch</span>
             </motion.h1>
-            <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <motion.p variants={itemVariants} className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Have a project in mind? Want to collaborate? Or just want to say hello? 
               I'd love to hear from you. Let's start a conversation!
             </motion.p>
@@ -110,7 +110,7 @@ const Contact = () => {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6 flex items-center"
+                  className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-600 text-green-700 dark:text-green-300 px-4 py-3 rounded mb-6 flex items-center"
                 >
                   <HiCheck className="mr-2" />
                   Thank you! Your message has been sent successfully.
@@ -121,7 +121,7 @@ const Contact = () => {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6"
+                  className="bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-300 px-4 py-3 rounded mb-6"
                 >
                   Sorry, there was an error sending your message. Please try again.
                 </motion.div>
@@ -129,7 +129,7 @@ const Contact = () => {
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <motion.div variants={itemVariants}>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Full Name *
                   </label>
                   <input
@@ -143,7 +143,7 @@ const Contact = () => {
                 </motion.div>
 
                 <motion.div variants={itemVariants}>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Email Address *
                   </label>
                   <input

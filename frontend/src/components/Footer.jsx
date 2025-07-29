@@ -12,35 +12,35 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-1">
             <h3 className="text-2xl font-bold gradient-text mb-4">
-              John Doe
+              M Yogesh Vishwanath
             </h3>
             <p className="text-gray-400 mb-4">
-              Full Stack Developer passionate about creating meaningful digital experiences.
+              AI Prompt Engineer passionate about creating meaningful digital experiences.
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com/johndoe" 
+                href="https://github.com/yogeshmagatam" 
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="GitHub"
               >
                 <FaGithub size={20} />
               </a>
               <a 
-                href="https://linkedin.com/in/johndoe" 
+                href="https://linkedin.com/in/yogeshmagatam" 
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin size={20} />
               </a>
               <a 
-                href="https://twitter.com/johndoe" 
+                href="https://twitter.com/yogeshmagatam" 
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="Twitter"
               >
                 <FaTwitter size={20} />
               </a>
               <a 
-                href="mailto:john@example.com" 
+                href="mailto:yogeshmagatam@gmail.com" 
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="Email"
               >
@@ -81,9 +81,9 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-gray-400">
               <li>Web Development</li>
-              <li>Mobile App Development</li>
+              <li>AI model training</li>
               <li>UI/UX Design</li>
-              <li>Technical Consulting</li>
+              <li>Prompting Techniques</li>
             </ul>
           </div>
 
@@ -91,9 +91,9 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
             <div className="space-y-2 text-gray-400">
-              <p>San Francisco, CA</p>
-              <p>john@example.com</p>
-              <p>+1 (555) 123-4567</p>
+              <p>Hyderabad, Telangana</p>
+              <p>yogeshmagatam@gmail.com</p>
+              <p>+91 9858000000</p>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © {currentYear} John Doe. All rights reserved.
+              © {currentYear} M Yogesh Vishwanath. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">

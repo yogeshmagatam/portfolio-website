@@ -19,69 +19,36 @@ const Projects = () => {
         const sampleProjects = [
           {
             id: '1',
-            title: 'E-Commerce Platform',
-            description: 'A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, payment processing with Stripe, real-time inventory management, and admin dashboard.',
-            technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe API'],
+            title: 'Digital Certificate Management System',
+            description: 'A full-stack digital certificate management system built with React.js and Flask. Features include secure certificate generation, validation, and management with user authentication and admin dashboard.',
+            technologies: ['React', 'Flask', 'MongoDB', 'Python', 'JavaScript'],
             image_url: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-            github_url: 'https://github.com/johndoe/ecommerce-platform',
-            live_url: 'https://ecommerce-demo.johndoe.com',
+            github_url: 'https://github.com/yogeshmagatam/Digital-Certificate-Management-System',
+            live_url: '#',
             featured: true,
             created_at: '2023-12-01'
           },
           {
             id: '2',
-            title: 'Task Management App',
-            description: 'A collaborative task management application with real-time updates using Socket.io. Built with Vue.js frontend and Python FastAPI backend with PostgreSQL database.',
-            technologies: ['Vue.js', 'Python', 'FastAPI', 'PostgreSQL', 'Socket.io'],
+            title: 'Pi Ads',
+            description: 'An innovative application that helps display ads on screens using Raspberry Pi. Features include remote ad management, scheduling, and real-time content updates for digital signage solutions.',
+            technologies: ['Python', 'Raspberry Pi', 'Linux', 'GPIO'],
             image_url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
-            github_url: 'https://github.com/johndoe/task-manager',
-            live_url: 'https://tasks.johndoe.com',
+            github_url: 'https://github.com/yogeshmagatam/Pi-Ads',
+            live_url: '#',
             featured: true,
             created_at: '2023-11-15'
           },
           {
             id: '3',
-            title: 'Weather Dashboard',
-            description: 'A beautiful weather dashboard with data visualization using D3.js. Integrates with OpenWeather API to provide real-time weather data and forecasts with interactive charts.',
-            technologies: ['React', 'D3.js', 'OpenWeather API', 'Chart.js'],
+            title: 'Portfolio Website',
+            description: 'A modern, responsive portfolio website built with React and FastAPI. Features include dark mode, animations, contact form, and admin dashboard for content management.',
+            technologies: ['React', 'FastAPI', 'MongoDB', 'Tailwind CSS', 'Framer Motion'],
             image_url: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop',
-            github_url: 'https://github.com/johndoe/weather-dashboard',
-            live_url: 'https://weather.johndoe.com',
+            github_url: 'https://github.com/yogeshmagatam/portfolio-website',
+            live_url: '#',
             featured: false,
             created_at: '2023-10-20'
-          },
-          {
-            id: '4',
-            title: 'Social Media Analytics Tool',
-            description: 'A comprehensive analytics tool for social media metrics. Built with React dashboard and Python backend for data processing. Features automated reporting and insights.',
-            technologies: ['React', 'Python', 'Pandas', 'MongoDB', 'Chart.js'],
-            image_url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
-            github_url: 'https://github.com/johndoe/social-analytics',
-            live_url: 'https://analytics.johndoe.com',
-            featured: false,
-            created_at: '2023-09-10'
-          },
-          {
-            id: '5',
-            title: 'Real Estate Listing Platform',
-            description: 'A modern real estate platform with advanced search filters, interactive maps using Mapbox, and virtual tour integration. Built with Next.js for optimal performance.',
-            technologies: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox API', 'Cloudinary'],
-            image_url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&h=300&fit=crop',
-            github_url: 'https://github.com/johndoe/realestate-platform',
-            live_url: 'https://realestate.johndoe.com',
-            featured: true,
-            created_at: '2023-08-05'
-          },
-          {
-            id: '6',
-            title: 'Personal Finance Tracker',
-            description: 'A comprehensive personal finance management application with expense tracking, budget planning, and financial goal setting. Features secure bank integration and detailed analytics.',
-            technologies: ['React', 'Node.js', 'PostgreSQL', 'Plaid API', 'Chart.js'],
-            image_url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=300&fit=crop',
-            github_url: 'https://github.com/johndoe/finance-tracker',
-            live_url: 'https://finance.johndoe.com',
-            featured: false,
-            created_at: '2023-07-12'
           }
         ];
         
@@ -146,9 +113,9 @@ const Projects = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-gray-800">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -156,10 +123,10 @@ const Projects = () => {
             variants={containerVariants}
             className="text-center mb-12"
           >
-            <motion.h1 variants={itemVariants} className="mb-6">
+            <motion.h1 variants={itemVariants} className="mb-6 text-gray-900 dark:text-white">
               My <span className="gradient-text">Projects</span>
             </motion.h1>
-            <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <motion.p variants={itemVariants} className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               A showcase of my recent work, featuring full-stack applications, 
               web platforms, and creative solutions built with modern technologies.
             </motion.p>
@@ -168,18 +135,18 @@ const Projects = () => {
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-white border-b">
+      <section className="py-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="container">
           <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
-              <HiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <HiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
                 placeholder="Search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
               />
             </div>
 
@@ -192,7 +159,7 @@ const Projects = () => {
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     selectedTech === tech
                       ? 'bg-primary-600 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                   }`}
                 >
                   {tech}
@@ -208,7 +175,7 @@ const Projects = () => {
         <div className="container">
           {filteredProjects.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-gray-600 text-lg">No projects match your search criteria.</p>
+              <p className="text-gray-600 dark:text-gray-400 text-lg">No projects match your search criteria.</p>
             </div>
           ) : (
             <motion.div

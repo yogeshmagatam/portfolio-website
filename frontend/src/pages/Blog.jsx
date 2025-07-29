@@ -82,9 +82,9 @@ const Blog = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-gray-800">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -92,10 +92,10 @@ const Blog = () => {
             variants={containerVariants}
             className="text-center mb-12"
           >
-            <motion.h1 variants={itemVariants} className="mb-6">
+            <motion.h1 variants={itemVariants} className="mb-6 text-gray-900 dark:text-white">
               My <span className="gradient-text">Blog</span>
             </motion.h1>
-            <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <motion.p variants={itemVariants} className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Thoughts, insights, and tutorials on web development, technology trends, 
               and my journey as a software developer.
             </motion.p>

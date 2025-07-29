@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { HiDownload, HiMail, HiExternalLink } from 'react-icons/hi';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { HiDownload, HiMail, HiExternalLink, HiCode, HiLightningBolt, HiSparkles } from 'react-icons/hi';
+import { FaGithub, FaLinkedin, FaTwitter, FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
+import { SiJavascript, SiTypescript, SiMongodb } from 'react-icons/si';
 import { portfolioAPI } from '../services/api';
 
 const Home = () => {
@@ -29,6 +30,10 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,10 +49,161 @@ const Home = () => {
     visible: { opacity: 1, y: 0 }
   };
 
+  const floatingVariants = {
+    animate: {
+      y: [0, -10, 0],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const pulseVariants = {
+    animate: {
+      scale: [1, 1.05, 1],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const rotateVariants = {
+    animate: {
+      rotate: [0, 360],
+      transition: {
+        duration: 20,
+        repeat: Infinity,
+        ease: "linear"
+      }
+    }
+  };
+
+  const techIcons = [
+    { icon: FaReact, name: 'React', color: 'text-blue-500' },
+    { icon: FaNodeJs, name: 'Node.js', color: 'text-green-600' },
+    { icon: FaPython, name: 'Python', color: 'text-yellow-500' },
+    { icon: SiJavascript, name: 'JavaScript', color: 'text-yellow-400' },
+    { icon: SiTypescript, name: 'TypeScript', color: 'text-blue-600' },
+    { icon: SiMongodb, name: 'MongoDB', color: 'text-green-500' }
+  ];
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <motion.div
+        className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-500 dark:from-blue-500 dark:to-purple-600 rounded-full opacity-20 dark:opacity-30 blur-xl"
+        animate={{
+          x: [0, 100, 0],
+          y: [0, -50, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div
+        className="absolute top-40 right-20 w-32 h-32 bg-gradient-to-r from-pink-400 to-red-500 dark:from-pink-500 dark:to-red-600 rounded-full opacity-20 dark:opacity-30 blur-xl"
+        animate={{
+          x: [0, -80, 0],
+          y: [0, 60, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div
+        className="absolute bottom-40 left-1/4 w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 dark:from-green-500 dark:to-blue-600 rounded-full opacity-20 dark:opacity-30 blur-xl"
+        animate={{
+          x: [0, 60, 0],
+          y: [0, -40, 0],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
+      {/* Additional Floating Elements */}
+      <motion.div
+        className="absolute top-1/3 right-1/4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 dark:from-yellow-500 dark:to-orange-600 rounded-full opacity-30 dark:opacity-40"
+        animate={{
+          y: [0, -30, 0],
+          rotate: [0, 180, 360],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div
+        className="absolute bottom-1/3 left-1/3 w-12 h-12 bg-gradient-to-r from-indigo-400 to-purple-500 dark:from-indigo-500 dark:to-purple-600 rounded-full opacity-25 dark:opacity-35"
+        animate={{
+          x: [0, 40, 0],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
+      {/* Particle System */}
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 bg-white dark:bg-blue-400 rounded-full opacity-60 dark:opacity-80"
+          style={{
+            left: `${20 + (i * 15)}%`,
+            top: `${10 + (i % 2 * 30)}%`,
+          }}
+          animate={{
+            y: [0, -100, 0],
+            opacity: [0.6, 0, 0.6],
+            scale: [1, 0.5, 1],
+          }}
+          transition={{
+            duration: 3 + i,
+            repeat: Infinity,
+            delay: i * 0.5,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+
+      {/* Floating Tech Icons */}
+      {techIcons.map((tech, index) => (
+        <motion.div
+          key={tech.name}
+          className={`absolute text-4xl ${tech.color} opacity-30 dark:opacity-50`}
+          style={{
+            left: `${20 + (index * 15)}%`,
+            top: `${30 + (index % 2 * 20)}%`,
+          }}
+          variants={floatingVariants}
+          animate="animate"
+          transition={{
+            delay: index * 0.5,
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <tech.icon />
+        </motion.div>
+      ))}
+
       {/* Hero Section */}
-      <section className="hero-gradient section-padding min-h-screen flex items-center">
+      <section className="hero-gradient section-padding min-h-screen flex items-center relative z-10">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -55,67 +211,154 @@ const Home = () => {
             variants={containerVariants}
             className="text-center"
           >
-            <motion.div variants={itemVariants} className="mb-8">
+            <motion.div 
+              variants={itemVariants} 
+              className="mb-8 relative"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <motion.div
+                className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.5, 0.8, 0.5],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-                alt="John Doe"
-                className="w-32 h-32 rounded-full mx-auto mb-6 shadow-lg"
+                src="/src/images/yogesh.jpeg"
+                alt="Magatam Yogesh Vishwanath"
+                className="relative w-32 h-32 rounded-full mx-auto mb-6 shadow-lg object-cover border-4 border-white"
               />
             </motion.div>
             
             <motion.h1 
               variants={itemVariants}
-              className="text-5xl md:text-7xl font-bold text-gray-900 mb-6"
+              className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6"
             >
-              Hi, I'm <span className="gradient-text">John Doe</span>
+              Hi, I'm <motion.span 
+                className="gradient-text"
+                animate={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                style={{
+                  backgroundSize: "200% 200%",
+                }}
+              >
+                Magatam Yogesh Vishwanath
+              </motion.span>
             </motion.h1>
             
             <motion.p 
               variants={itemVariants}
-              className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
             >
-              A passionate <span className="font-semibold text-primary-600">Full Stack Developer</span> who loves creating 
-              beautiful and functional web applications with modern technologies.
+              A passionate <span className="font-semibold text-primary-600 dark:text-primary-400">AI prompt engineer</span> who loves creating 
+              beautiful and functional prompts for AI applications with modern technologies.
             </motion.p>
             
             <motion.div 
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
             >
-              <Link to="/contact" className="btn-primary inline-flex items-center">
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Link to="/contact" className="btn-primary inline-flex items-center relative overflow-hidden group">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "0%" }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <span className="relative z-10 flex items-center">
                 <HiMail className="mr-2" />
                 Get In Touch
+                  </span>
               </Link>
+              </motion.div>
+              
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
               <a 
                 href="/resume.pdf" 
                 download 
-                className="btn-secondary inline-flex items-center"
-              >
+                  className="btn-secondary inline-flex items-center relative overflow-hidden group"
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "0%" }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <span className="relative z-10 flex items-center">
                 <HiDownload className="mr-2" />
                 Download Resume
+                  </span>
               </a>
-            </motion.div>
+              </motion.div>
+            </motion.div> 
             
             <motion.div 
               variants={itemVariants}
               className="flex justify-center space-x-6"
             >
-              <a href="https://github.com/johndoe" className="text-gray-600 hover:text-primary-600 text-2xl">
-                <FaGithub />
-              </a>
-              <a href="https://linkedin.com/in/johndoe" className="text-gray-600 hover:text-primary-600 text-2xl">
-                <FaLinkedin />
-              </a>
-              <a href="https://twitter.com/johndoe" className="text-gray-600 hover:text-primary-600 text-2xl">
-                <FaTwitter />
-              </a>
+              {[
+                { icon: FaGithub, href: "https://github.com/yogeshmagatam", label: "GitHub" },
+                { icon: FaLinkedin, href: "https://linkedin.com/in/yogeshmagatam", label: "LinkedIn" },
+                { icon: FaTwitter, href: "https://twitter.com/yogeshmagatam", label: "Twitter" }
+              ].map((social, index) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  className="text-gray-600 hover:text-primary-600 text-2xl relative group"
+                  whileHover={{ 
+                    scale: 1.2, 
+                    y: -5,
+                    rotate: [0, -10, 10, 0]
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 300,
+                    duration: 0.3
+                  }}
+                >
+                  <motion.div
+                    className="absolute -inset-2 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-20 blur-sm"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  <social.icon className="relative z-10" />
+                </motion.a>
+              ))}
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-gray-800">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -123,37 +366,91 @@ const Home = () => {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            <motion.h2 variants={itemVariants} className="text-center mb-12">
+            <motion.h2 variants={itemVariants} className="text-center mb-12 text-gray-900 dark:text-white">
               About Me
             </motion.h2>
             
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div variants={itemVariants}>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  I'm a software developer with 5+ years of experience building scalable web applications. 
-                  I specialize in React, Node.js, and Python, and I'm passionate about clean code, 
+                <motion.p 
+                  className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  I'm a prompt engineer with 1+ years of experience building scalable prompt engineering applications. 
+                  I specialize in prompt engineering, and I'm passionate about clean prompts, 
                   user experience, and continuous learning.
-                </p>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                </motion.p>
+                <motion.p 
+                  className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
                   When I'm not coding, you can find me contributing to open-source projects, 
                   writing technical blogs, or exploring the latest tech trends. I believe in 
                   building software that makes a positive impact on people's lives.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {['React', 'Node.js', 'Python', 'TypeScript', 'AWS', 'MongoDB'].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-sm">
+                </motion.p>
+                <motion.div 
+                  className="flex flex-wrap gap-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  {['React', 'Node.js', 'Python', 'TypeScript', 'AWS', 'MongoDB', 'Raspberry Pi'].map((tech, index) => (
+                    <motion.span 
+                      key={tech} 
+                      className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-sm cursor-pointer"
+                      whileHover={{ 
+                        scale: 1.1, 
+                        backgroundColor: "#3B82F6",
+                        color: "white",
+                        y: -2
+                      }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 300,
+                        duration: 0.3, 
+                        delay: index * 0.1 
+                      }}
+                    >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
               
-              <motion.div variants={itemVariants}>
+              <motion.div 
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <motion.div
+                  className="relative"
+                  whileHover={{ rotateY: 5 }}
+                  transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                >
+                  <motion.div
+                    className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-25"
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      opacity: [0.25, 0.4, 0.25],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
                 <img
                   src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=400&fit=crop"
                   alt="Workspace"
-                  className="rounded-lg shadow-lg"
+                    className="relative rounded-lg shadow-lg"
                 />
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>
@@ -161,7 +458,7 @@ const Home = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -169,32 +466,65 @@ const Home = () => {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            <motion.h2 variants={itemVariants} className="text-center mb-12">
+            <motion.h2 variants={itemVariants} className="text-center mb-12 text-gray-900 dark:text-white">
               Skills & Technologies
             </motion.h2>
             
             <div className="grid md:grid-cols-4 gap-8">
               {[
-                { category: 'Frontend', skills: ['React', 'Vue.js', 'TypeScript', 'Tailwind CSS'] },
-                { category: 'Backend', skills: ['Node.js', 'Python', 'FastAPI', 'Express.js'] },
-                { category: 'Database', skills: ['MongoDB', 'PostgreSQL', 'Redis', 'Firebase'] },
-                { category: 'Tools', skills: ['Git', 'Docker', 'AWS', 'Figma'] }
+                { category: 'Frontend', skills: ['React', 'Vue.js', 'TypeScript', 'Tailwind CSS'], icon: HiCode, color: 'from-blue-500 to-cyan-500' },
+                { category: 'Backend', skills: ['Node.js', 'Python', 'FastAPI', 'Express.js'], icon: HiLightningBolt, color: 'from-green-500 to-emerald-500' },
+                { category: 'Database', skills: ['MongoDB', 'PostgreSQL', 'Redis', 'Firebase'], icon: HiSparkles, color: 'from-purple-500 to-pink-500' },
+                { category: 'Tools', skills: ['Git', 'Docker', 'AWS', 'Figma'], icon: HiExternalLink, color: 'from-orange-500 to-red-500' }
               ].map((group, index) => (
                 <motion.div
                   key={group.category}
                   variants={itemVariants}
-                  className="card text-center"
+                  className="card text-center relative overflow-hidden group"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -5,
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <h3 className="text-xl font-semibold mb-4 text-primary-600">
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-r ${group.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                    initial={{ scale: 0.8 }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.div
+                    className="relative z-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                                         <motion.div
+                       className="text-4xl mb-4 text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300"
+                       whileHover={{ rotate: 360 }}
+                       transition={{ duration: 0.6 }}
+                     >
+                       <group.icon />
+                     </motion.div>
+                     <h3 className="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
                     {group.category}
                   </h3>
                   <ul className="space-y-2">
-                    {group.skills.map((skill) => (
-                      <li key={skill} className="text-gray-600">
+                      {group.skills.map((skill, skillIndex) => (
+                                                 <motion.li 
+                           key={skill} 
+                           className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 cursor-pointer transition-colors"
+                           initial={{ opacity: 0, x: -10 }}
+                           whileInView={{ opacity: 1, x: 0 }}
+                           transition={{ duration: 0.3, delay: (index * 0.1) + (skillIndex * 0.05) }}
+                           whileHover={{ x: 5, color: "#3B82F6" }}
+                         >
                         {skill}
-                      </li>
+                         </motion.li>
                     ))}
                   </ul>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
@@ -222,29 +552,21 @@ const Home = () => {
               {/* Sample projects data - will be replaced with real data */}
               {[
                 {
-                  title: "E-Commerce Platform",
-                  description: "A full-stack e-commerce solution built with React and Node.js",
+                  title: "Digital Certificate Management System",
+                  description: "A full-stack digital certificate management system built with React.js and flask",
                   image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
-                  technologies: ["React", "Node.js", "MongoDB"],
-                  github: "#",
+                  technologies: ["React", "flask", "MongoDB"],
+                  github: "https://github.com/yogeshmagatam/Digital-Certificate-Management-System",
                   live: "#"
                 },
                 {
-                  title: "Task Management App",
-                  description: "A collaborative task management tool with real-time updates",
+                  title: "Pi Ads",
+                  description: "An application which helps to display ads on the screen using raspberry pi",
                   image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
-                  technologies: ["Vue.js", "Python", "PostgreSQL"],
-                  github: "#",
+                  technologies: ["Python" , "Raspberry Pi"],
+                  github: "https://github.com/yogeshmagatam/Pi-Ads",
                   live: "#"
                 },
-                {
-                  title: "Weather Dashboard",
-                  description: "A beautiful weather dashboard with data visualization",
-                  image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=250&fit=crop",
-                  technologies: ["React", "D3.js", "API"],
-                  github: "#",
-                  live: "#"
-                }
               ].map((project, index) => (
                 <motion.div
                   key={index}
@@ -287,7 +609,7 @@ const Home = () => {
       </section>
 
       {/* Experience Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -295,26 +617,13 @@ const Home = () => {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            <motion.h2 variants={itemVariants} className="text-center mb-12">
+            <motion.h2 variants={itemVariants} className="text-center mb-12 text-gray-900 dark:text-white">
               Work Experience
             </motion.h2>
             
             <div className="max-w-4xl mx-auto">
               {[
-                {
-                  company: "TechCorp Inc.",
-                  position: "Senior Full Stack Developer",
-                  period: "2022 - Present",
-                  description: "Led development of microservices architecture serving 1M+ users. Mentored junior developers and established coding standards.",
-                  technologies: ["React", "Node.js", "AWS", "MongoDB"]
-                },
-                {
-                  company: "StartupXYZ",
-                  position: "Full Stack Developer",
-                  period: "2020 - 2022",
-                  description: "Built the core platform from scratch, implemented CI/CD pipelines, and reduced deployment time by 60%.",
-                  technologies: ["Vue.js", "Python", "PostgreSQL", "Docker"]
-                }
+                 Still in search
               ].map((exp, index) => (
                 <motion.div
                   key={index}
@@ -323,15 +632,15 @@ const Home = () => {
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-semibold">{exp.position}</h3>
-                      <p className="text-primary-600 font-medium">{exp.company}</p>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{exp.position}</h3>
+                      <p className="text-primary-600 dark:text-primary-400 font-medium">{exp.company}</p>
                     </div>
-                    <span className="text-gray-500 text-sm">{exp.period}</span>
+                    <span className="text-gray-500 dark:text-gray-400 text-sm">{exp.period}</span>
                   </div>
-                  <p className="text-gray-600 mb-4">{exp.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{exp.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-primary-100 text-primary-800 text-sm rounded">
+                      <span key={tech} className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-sm rounded">
                         {tech}
                       </span>
                     ))}
