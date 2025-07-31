@@ -542,8 +542,8 @@ const Home = () => {
             variants={containerVariants}
           >
             <motion.div variants={itemVariants} className="text-center mb-12">
-              <h2>Featured Projects</h2>
-              <p className="text-gray-600 mt-4">
+              <h2 className="text-gray-900 dark:text-black">Featured Projects</h2>
+              <p className="text-gray-600 dark:text-black-300 mt-4">
                 Some of my recent work that I'm proud of
               </p>
             </motion.div>
