@@ -2,68 +2,72 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { HiExternalLink, HiCode, HiSearch } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
-import { portfolioAPI } from '../services/api';
+
+// Static projects data
+const staticProjects = [
+  {
+    id: '1',
+    title: 'Online Voting System',
+    description: 'A secure and modern online voting system built with JavaScript. Enables democratic voting processes with user authentication, real-time results, and vote verification features.',
+    technologies: ['JavaScript', 'Node.js', 'MongoDB', 'Express', 'HTML', 'CSS'],
+    image_url: 'https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=500&h=300&fit=crop',
+    github_url: 'https://github.com/yogeshmagatam/Online-Voting-System',
+    live_url: '#',
+    featured: true,
+    created_at: '2026-01-23'
+  },
+  {
+    id: '2',
+    title: 'AI Career Advisor Chatbot',
+    description: 'An intelligent career guidance chatbot powered by AI. Built with TypeScript, it provides personalized career recommendations, skill assessments, and professional development advice.',
+    technologies: ['TypeScript', 'AI/ML', 'React', 'Node.js', 'Natural Language Processing'],
+    image_url: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=500&h=300&fit=crop',
+    github_url: 'https://github.com/yogeshmagatam/AI-Career-Advisor-Chatbot',
+    live_url: '#',
+    featured: true,
+    created_at: '2025-11-18'
+  },
+  {
+    id: '3',
+    title: 'Digital Certificate Management System',
+    description: 'A comprehensive digital certificate management system built with Python and Flask. Features include secure certificate generation, validation, verification, and management with user authentication.',
+    technologies: ['Python', 'Flask', 'MongoDB', 'HTML', 'CSS', 'JavaScript'],
+    image_url: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
+    github_url: 'https://github.com/yogeshmagatam/Digital-Certificate-Management-System',
+    live_url: '#',
+    featured: true,
+    created_at: '2025-10-20'
+  },
+  {
+    id: '4',
+    title: 'Portfolio Website',
+    description: 'A modern, responsive portfolio website built with React and Vite. Features include dark mode, smooth animations, and a beautiful responsive design.',
+    technologies: ['React', 'Python', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    image_url: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop',
+    github_url: 'https://github.com/yogeshmagatam/portfolio-website',
+    live_url: '#',
+    featured: false,
+    created_at: '2025-07-31'
+  },
+  {
+    id: '5',
+    title: 'Pi Ads',
+    description: 'An innovative digital signage application using Raspberry Pi. Display ads, announcements, and content on screens with remote management, scheduling, and real-time updates.',
+    technologies: ['Python', 'Raspberry Pi', 'Linux', 'GPIO', 'Flask'],
+    image_url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
+    github_url: 'https://github.com/yogeshmagatam/piads',
+    live_url: '#',
+    featured: false,
+    created_at: '2025-06-18'
+  }
+];
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
-  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [projects, setProjects] = useState(staticProjects);
+  const [filteredProjects, setFilteredProjects] = useState(staticProjects);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTech, setSelectedTech] = useState('All');
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await portfolioAPI.getProjects();
-        // Use sample data if no projects in database
-        const sampleProjects = [
-          {
-            id: '1',
-            title: 'Digital Certificate Management System',
-            description: 'A full-stack digital certificate management system built with React.js and Flask. Features include secure certificate generation, validation, and management with user authentication and admin dashboard.',
-            technologies: ['React', 'Flask', 'MongoDB', 'Python', 'JavaScript'],
-            image_url: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-            github_url: 'https://github.com/yogeshmagatam/Digital-Certificate-Management-System',
-            live_url: '#',
-            featured: true,
-            created_at: '2023-12-01'
-          },
-          {
-            id: '2',
-            title: 'Pi Ads',
-            description: 'An innovative application that helps display ads on screens using Raspberry Pi. Features include remote ad management, scheduling, and real-time content updates for digital signage solutions.',
-            technologies: ['Python', 'Raspberry Pi', 'Linux', 'GPIO'],
-            image_url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
-            github_url: 'https://github.com/yogeshmagatam/Pi-Ads',
-            live_url: '#',
-            featured: true,
-            created_at: '2023-11-15'
-          },
-          {
-            id: '3',
-            title: 'Portfolio Website',
-            description: 'A modern, responsive portfolio website built with React and FastAPI. Features include dark mode, animations, contact form, and admin dashboard for content management.',
-            technologies: ['React', 'FastAPI', 'MongoDB', 'Tailwind CSS', 'Framer Motion'],
-            image_url: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop',
-            github_url: 'https://github.com/yogeshmagatam/portfolio-website',
-            live_url: '#',
-            featured: false,
-            created_at: '2023-10-20'
-          }
-        ];
-        
-        const projectsData = response.data.length > 0 ? response.data : sampleProjects;
-        setProjects(projectsData);
-        setFilteredProjects(projectsData);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let filtered = projects;
@@ -113,9 +117,50 @@ const Projects = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden">
+      {/* Animated Background Elements - Neon Theme */}
+      <motion.div
+        className="absolute top-20 left-10 w-96 h-96 bg-neon-blue opacity-10 rounded-full blur-3xl"
+        animate={{
+          x: [0, 100, 0],
+          y: [0, -50, 0],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div
+        className="absolute top-40 right-20 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl"
+        animate={{
+          x: [0, -80, 0],
+          y: [0, 60, 0],
+          scale: [1.2, 1, 1.2],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div
+        className="absolute bottom-40 left-1/4 w-72 h-72 bg-neon-cyan opacity-10 rounded-full blur-3xl"
+        animate={{
+          x: [0, 60, 0],
+          y: [0, -40, 0],
+          scale: [1, 1.3, 1],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
       {/* Hero Section */}
-      <section className="section-padding bg-white dark:bg-gray-800">
+      <section className="section-padding relative z-10">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -149,23 +194,6 @@ const Projects = () => {
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
               />
             </div>
-
-            {/* Technology Filter */}
-            <div className="flex flex-wrap gap-2">
-              {allTechnologies.map((tech) => (
-                <button
-                  key={tech}
-                  onClick={() => setSelectedTech(tech)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedTech === tech
-                      ? 'bg-primary-600 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                  }`}
-                >
-                  {tech}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -188,67 +216,87 @@ const Projects = () => {
                 <motion.div
                   key={project.id}
                   variants={itemVariants}
-                  className="card hover-lift group"
+                  className="card card-3d glow-on-hover group"
+                  whileHover={{ 
+                    y: -10,
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {/* Project Image */}
-                  <div className="relative overflow-hidden rounded-lg mb-4">
-                    <img
-                      src={project.image_url}
-                      alt={project.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {project.featured && (
-                      <div className="absolute top-3 left-3 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        Featured
-                      </div>
-                    )}
-                  </div>
+                  <div className="card-3d-content">
+                    {/* Project Image */}
+                    <div className="relative overflow-hidden rounded-lg mb-4">
+                      <motion.img
+                        src={project.image_url}
+                        alt={project.title}
+                        className="w-full h-48 object-cover"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                      {project.featured && (
+                        <motion.div 
+                          className="absolute top-3 left-3 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-medium"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                        >
+                          Featured
+                        </motion.div>
+                      )}
+                    </div>
 
-                  {/* Project Info */}
-                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
+                    {/* Project Info */}
+                    <h3 className="text-xl font-semibold mb-3 dark:text-white">{project.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{project.description}</p>
 
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-gray-100 text-gray-700 text-sm rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="px-2 py-1 bg-gray-100 text-gray-700 text-sm rounded">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
-                  </div>
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                        <motion.span
+                          key={tech}
+                          className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: index * 0.1 + techIndex * 0.05 }}
+                          whileHover={{ scale: 1.1, backgroundColor: "#3B82F6", color: "white" }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                      {project.technologies.length > 4 && (
+                        <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded">
+                          +{project.technologies.length - 4}
+                        </span>
+                      )}
+                    </div>
 
-                  {/* Links */}
-                  <div className="flex space-x-4">
-                    {project.github_url && (
-                      <a
-                        href={project.github_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-gray-600 hover:text-primary-600 transition-colors"
-                      >
-                        <FaGithub className="mr-1" />
-                        Code
-                      </a>
-                    )}
-                    {project.live_url && (
-                      <a
-                        href={project.live_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-gray-600 hover:text-primary-600 transition-colors"
-                      >
-                        <HiExternalLink className="mr-1" />
-                        Live Demo
-                      </a>
-                    )}
+                    {/* Links */}
+                    <div className="flex space-x-4">
+                      {project.github_url && (
+                        <motion.a
+                          href={project.github_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                          whileHover={{ scale: 1.1, x: 5 }}
+                        >
+                          <FaGithub className="mr-1" />
+                          Code
+                        </motion.a>
+                      )}
+                      {project.live_url && (
+                        <motion.a
+                          href={project.live_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                          whileHover={{ scale: 1.1, x: 5 }}
+                        >
+                          <HiExternalLink className="mr-1" />
+                          Live Demo
+                        </motion.a>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
-import DarkModeToggle from './DarkModeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +10,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Blog', path: '/blog' },
+
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -23,7 +22,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="text-2xl font-bold gradient-text">
-          M Yogesh Vishwanath            
+          MYV            
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,14 +48,10 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
-            
-                        {/* Dark Mode Toggle */}
-            <DarkModeToggle />
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <DarkModeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"

@@ -1,34 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { HiDownload, HiMail, HiExternalLink, HiCode, HiLightningBolt, HiSparkles } from 'react-icons/hi';
+import { HiDownload, HiMail, HiExternalLink, HiCode, HiLightningBolt, HiSparkles, HiArrowDown } from 'react-icons/hi';
 import { FaGithub, FaLinkedin, FaTwitter, FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiMongodb } from 'react-icons/si';
-import { portfolioAPI } from '../services/api';
+import TypingAnimation from '../components/TypingAnimation';
+import SkillsSection from '../components/SkillsSection';
+import Timeline from '../components/Timeline';
 
 const Home = () => {
-  const [projects, setProjects] = useState([]);
-  const [skills, setSkills] = useState([]);
-  const [experience, setExperience] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [projectsRes, skillsRes, experienceRes] = await Promise.all([
-          portfolioAPI.getProjects(),
-          portfolioAPI.getSkills(),
-          portfolioAPI.getExperience()
-        ]);
-        setProjects(projectsRes.data.slice(0, 3)); // Show only 3 featured projects
-        setSkills(skillsRes.data);
-        setExperience(experienceRes.data.slice(0, 2)); // Show only 2 recent experiences
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  // No need for state management as we're using static data directly
 
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 200]);
@@ -92,40 +73,43 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Animated Background Elements */}
+    <div className="min-h-screen relative overflow-hidden bg-dark-900">
+      {/* Animated Background Elements - Neon Theme */}
       <motion.div
-        className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-500 dark:from-blue-500 dark:to-purple-600 rounded-full opacity-20 dark:opacity-30 blur-xl"
+        className="absolute top-20 left-10 w-96 h-96 bg-neon-blue opacity-10 rounded-full blur-3xl"
         animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
+          scale: [1, 1.2, 1],
         }}
         transition={{
-          duration: 8,
+          duration: 12,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       />
       <motion.div
-        className="absolute top-40 right-20 w-32 h-32 bg-gradient-to-r from-pink-400 to-red-500 dark:from-pink-500 dark:to-red-600 rounded-full opacity-20 dark:opacity-30 blur-xl"
+        className="absolute top-40 right-20 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl"
         animate={{
           x: [0, -80, 0],
           y: [0, 60, 0],
+          scale: [1.2, 1, 1.2],
         }}
         transition={{
-          duration: 10,
+          duration: 15,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       />
       <motion.div
-        className="absolute bottom-40 left-1/4 w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 dark:from-green-500 dark:to-blue-600 rounded-full opacity-20 dark:opacity-30 blur-xl"
+        className="absolute bottom-40 left-1/4 w-72 h-72 bg-neon-cyan opacity-10 rounded-full blur-3xl"
         animate={{
           x: [0, 60, 0],
           y: [0, -40, 0],
+          scale: [1, 1.3, 1],
         }}
         transition={{
-          duration: 6,
+          duration: 10,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -258,12 +242,28 @@ const Home = () => {
               </motion.span>
             </motion.h1>
             
+            <motion.div 
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto"
+            >
+              A passionate{' '}
+              <TypingAnimation 
+                texts={[
+                  'AI Prompt Engineer',
+                  'Full Stack Developer',
+                  'React Developer',
+                  'Problem Solver',
+                  'Tech Enthusiast'
+                ]} 
+                className="text-xl md:text-2xl"
+              />
+            </motion.div>
+            
             <motion.p 
               variants={itemVariants}
-              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
+              className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
             >
-              A passionate <span className="font-semibold text-primary-600 dark:text-primary-400">AI prompt engineer</span> who loves creating 
-              beautiful and functional prompts for AI applications with modern technologies.
+              who loves creating beautiful and functional applications with modern technologies.
             </motion.p>
             
             <motion.div 
@@ -457,80 +457,11 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-900">
-        <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2 variants={itemVariants} className="text-center mb-12 text-gray-900 dark:text-white">
-              Skills & Technologies
-            </motion.h2>
-            
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { category: 'Frontend', skills: ['React', 'Vue.js', 'TypeScript', 'Tailwind CSS'], icon: HiCode, color: 'from-blue-500 to-cyan-500' },
-                { category: 'Backend', skills: ['Node.js', 'Python', 'FastAPI', 'Express.js'], icon: HiLightningBolt, color: 'from-green-500 to-emerald-500' },
-                { category: 'Database', skills: ['MongoDB', 'PostgreSQL', 'Redis', 'Firebase'], icon: HiSparkles, color: 'from-purple-500 to-pink-500' },
-                { category: 'Tools', skills: ['Git', 'Docker', 'AWS', 'Figma'], icon: HiExternalLink, color: 'from-orange-500 to-red-500' }
-              ].map((group, index) => (
-                <motion.div
-                  key={group.category}
-                  variants={itemVariants}
-                  className="card text-center relative overflow-hidden group"
-                  whileHover={{ 
-                    scale: 1.05, 
-                    y: -5,
-                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <motion.div
-                    className={`absolute inset-0 bg-gradient-to-r ${group.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
-                    initial={{ scale: 0.8 }}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.div
-                    className="relative z-10"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                                         <motion.div
-                       className="text-4xl mb-4 text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300"
-                       whileHover={{ rotate: 360 }}
-                       transition={{ duration: 0.6 }}
-                     >
-                       <group.icon />
-                     </motion.div>
-                     <h3 className="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
-                    {group.category}
-                  </h3>
-                  <ul className="space-y-2">
-                      {group.skills.map((skill, skillIndex) => (
-                                                 <motion.li 
-                           key={skill} 
-                           className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 cursor-pointer transition-colors"
-                           initial={{ opacity: 0, x: -10 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ duration: 0.3, delay: (index * 0.1) + (skillIndex * 0.05) }}
-                           whileHover={{ x: 5, color: "#3B82F6" }}
-                         >
-                        {skill}
-                         </motion.li>
-                    ))}
-                  </ul>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Skills Section - New Component */}
+      <SkillsSection />
+
+      {/* Experience & Education Timeline - New Component */}
+      <Timeline />
 
       {/* Featured Projects Section */}
       <section className="section-padding bg-white">
@@ -549,22 +480,30 @@ const Home = () => {
             </motion.div>
             
             <div className="grid md:grid-cols-3 gap-8">
-              {/* Sample projects data - will be replaced with real data */}
+              {/* Featured projects from GitHub profile */}
               {[
                 {
-                  title: "Digital Certificate Management System",
-                  description: "A full-stack digital certificate management system built with React.js and flask",
-                  image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
-                  technologies: ["React", "flask", "MongoDB"],
-                  github: "https://github.com/yogeshmagatam/Digital-Certificate-Management-System",
+                  title: "Online Voting System",
+                  description: "A secure online voting system with authentication, real-time results, and vote verification",
+                  image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=400&h=250&fit=crop",
+                  technologies: ["JavaScript", "Node.js", "MongoDB"],
+                  github: "https://github.com/yogeshmagatam/Online-Voting-System",
                   live: "#"
                 },
                 {
-                  title: "Pi Ads",
-                  description: "An application which helps to display ads on the screen using raspberry pi",
-                  image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
-                  technologies: ["Python" , "Raspberry Pi"],
-                  github: "https://github.com/yogeshmagatam/Pi-Ads",
+                  title: "AI Career Advisor Chatbot",
+                  description: "An intelligent career guidance chatbot powered by AI for personalized recommendations",
+                  image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=400&h=250&fit=crop",
+                  technologies: ["TypeScript", "AI/ML", "React"],
+                  github: "https://github.com/yogeshmagatam/AI-Career-Advisor-Chatbot",
+                  live: "#"
+                },
+                {
+                  title: "Digital Certificate Management",
+                  description: "Comprehensive certificate system with generation, validation, and verification features",
+                  image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
+                  technologies: ["Python", "Flask", "MongoDB"],
+                  github: "https://github.com/yogeshmagatam/Digital-Certificate-Management-System",
                   live: "#"
                 },
               ].map((project, index) => (
@@ -608,81 +547,43 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-900">
-        <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2 variants={itemVariants} className="text-center mb-12 text-gray-900 dark:text-white">
-              Work Experience
-            </motion.h2>
-            
-            <div className="max-w-4xl mx-auto">
-              {[
-                {
-                  company: "Still in Search",
-                  position: "Full Stack Developer",
-                  period: "2025 - Present",
-                  description: "Actively seeking opportunities to apply my skills in React, Python, and IoT development. Passionate about building innovative solutions and contributing to meaningful projects.",
-                  technologies: ["React", "Python", "Flask", "MongoDB", "Raspberry Pi"]
-                },
-                {
-                  company: "Student Projects",
-                  position: "Software Developer",
-                  period: "2022 - 2024",
-                  description: "Built innovative projects including Digital Certificate Management System and Pi Ads application. Focused on practical problem-solving and modern web technologies.",
-                  technologies: ["React", "Flask", "Python", "MongoDB", "Raspberry Pi"]
-                }
-              ].map((exp, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="card mb-6 border-l-4 border-primary-500"
-                >
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{exp.position}</h3>
-                      <p className="text-primary-600 dark:text-primary-400 font-medium">{exp.company}</p>
-                    </div>
-                    <span className="text-gray-500 dark:text-gray-400 text-sm">{exp.period}</span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{exp.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-sm rounded">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="section-padding bg-primary-600 text-white">
-        <div className="container text-center">
+      <section className="section-padding bg-gradient-to-r from-neon-blue via-neon-purple to-neon-cyan text-white relative overflow-hidden">
+        {/* Animated background */}
+        <motion.div
+          className="absolute inset-0 opacity-20"
+          animate={{
+            backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          style={{
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+            backgroundSize: '60px 60px',
+          }}
+        />
+        <div className="container text-center relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            <motion.h2 variants={itemVariants} className="text-white mb-6">
+            <motion.h2 variants={itemVariants} className="text-white mb-6 text-4xl md:text-5xl font-bold">
               Let's Work Together
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-primary-100 mb-8 max-w-2xl mx-auto text-lg">
+            <motion.p variants={itemVariants} className="text-white/90 mb-8 max-w-2xl mx-auto text-lg">
               I'm always excited to take on new challenges and collaborate on interesting projects. 
               Let's discuss how we can bring your ideas to life!
             </motion.p>
             <motion.div variants={itemVariants}>
-              <Link to="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-medium hover:bg-primary-50 transition-colors">
+              <Link 
+                to="/contact" 
+                className="inline-block bg-white text-dark-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+              >
                 Start a Conversation
               </Link>
             </motion.div>

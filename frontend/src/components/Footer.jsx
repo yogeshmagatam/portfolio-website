@@ -64,11 +64,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-400 hover:text-white transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
                 <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
                   Contact
                 </Link>
@@ -93,7 +88,7 @@ const Footer = () => {
             <div className="space-y-2 text-gray-400">
               <p>Hyderabad, Telangana</p>
               <p>yogeshmagatam@gmail.com</p>
-              <p>+91 9858000000</p>
+              <p>+91 6300440153</p>
             </div>
           </div>
         </div>

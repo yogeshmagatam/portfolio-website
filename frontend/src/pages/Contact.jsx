@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { HiMail, HiPhone, HiLocationMarker, HiCheck } from 'react-icons/hi';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import { portfolioAPI } from '../services/api';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,16 +14,13 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    try {
-      await portfolioAPI.submitContact(data);
+    // Simulate form submission (frontend-only)
+    setTimeout(() => {
+      console.log('Contact form data:', data);
       setSubmitStatus('success');
       reset();
-    } catch (error) {
-      console.error('Contact form error:', error);
-      setSubmitStatus('error');
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const containerVariants = {
@@ -46,20 +42,20 @@ const Contact = () => {
     {
       icon: HiMail,
       label: 'Email',
-      value: 'john@example.com',
-      href: 'mailto:john@example.com'
+      value: 'yogeshmagatam@gmail.com',
+      href: 'mailto:yogeshmagatam@gmail.com'
     },
     {
       icon: HiPhone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567'
+      value: '+91 6300440153',
+      href: 'tel:+916300440153'
     },
     {
       icon: HiLocationMarker,
       label: 'Location',
-      value: 'San Francisco, CA',
-      href: 'https://maps.google.com/?q=San+Francisco,+CA'
+      value: 'Hyderabad, Telangana',
+      href: 'https://maps.google.com/?q=Hyderabad,+Telangana'
     }
   ];
 
@@ -70,9 +66,50 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-pink-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden">
+      {/* Animated Background Elements - Neon Theme */}
+      <motion.div
+        className="absolute top-20 right-10 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl"
+        animate={{
+          x: [0, -100, 0],
+          y: [0, 50, 0],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div
+        className="absolute bottom-20 left-10 w-96 h-96 bg-neon-pink opacity-10 rounded-full blur-3xl"
+        animate={{
+          x: [0, 100, 0],
+          y: [0, -50, 0],
+          scale: [1, 1.3, 1],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div
+        className="absolute top-1/2 right-1/4 w-80 h-80 bg-neon-cyan opacity-10 rounded-full blur-3xl"
+        animate={{
+          x: [0, -60, 0],
+          y: [0, 40, 0],
+          scale: [1.1, 1, 1.1],
+        }}
+        transition={{
+          duration: 14,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
       {/* Hero Section */}
-      <section className="section-padding bg-white dark:bg-gray-800">
+      <section className="section-padding relative z-10">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -92,7 +129,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="section-padding">
+      <section className="section-padding relative z-10">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -100,7 +137,8 @@ const Contact = () => {
               initial="hidden"
               animate="visible"
               variants={containerVariants}
-              className="card"
+              className="card card-3d shimmer"
+              whileHover={{ y: -5 }}
             >
               <motion.h2 variants={itemVariants} className="text-2xl font-semibold mb-6">
                 Send a Message
@@ -276,52 +314,6 @@ const Contact = () => {
               </motion.div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="section-padding bg-white">
-        <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2 variants={itemVariants} className="text-center mb-12">
-              Frequently Asked Questions
-            </motion.h2>
-            
-            <div className="max-w-4xl mx-auto space-y-6">
-              {[
-                {
-                  question: "What's your typical project timeline?",
-                  answer: "Project timelines vary based on complexity, but most websites take 2-6 weeks, while larger applications can take 2-4 months. I'll provide a detailed timeline during our initial consultation."
-                },
-                {
-                  question: "Do you work with clients remotely?",
-                  answer: "Yes! I work with clients worldwide. I'm experienced in remote collaboration and use modern tools to ensure smooth communication and project management."
-                },
-                {
-                  question: "What's your development process?",
-                  answer: "I follow an agile approach with regular check-ins, design mockups, development iterations, testing phases, and deployment. You'll be involved throughout the entire process."
-                },
-                {
-                  question: "Do you provide ongoing support?",
-                  answer: "Absolutely! I offer maintenance packages and ongoing support to ensure your website or application continues to run smoothly and stays up-to-date."
-                }
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="card"
-                >
-                  <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
     </div>
