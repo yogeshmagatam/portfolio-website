@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build --prefix frontend",
+  "buildCommand": "bash build.sh",
   "outputDirectory": "frontend/dist",
   "routes": [
     {
