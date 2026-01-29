@@ -7,6 +7,7 @@ import { SiJavascript, SiTypescript, SiMongodb } from 'react-icons/si';
 import TypingAnimation from '../components/TypingAnimation';
 import SkillsSection from '../components/SkillsSection';
 import Timeline from '../components/Timeline';
+import yogeshImage from '../images/yogesh.jpeg';
 
 const Home = () => {
   // No need for state management as we're using static data directly
@@ -214,7 +215,7 @@ const Home = () => {
                 }}
               />
               <img
-                src="/src/images/yogesh.jpeg"
+                src={yogeshImage}
                 alt="Magatam Yogesh Vishwanath"
                 className="relative w-32 h-32 rounded-full mx-auto mb-6 shadow-lg object-cover border-4 border-white"
               />
