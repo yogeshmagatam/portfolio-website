@@ -3,24 +3,55 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { HiMail, HiPhone, HiLocationMarker, HiCheck } from 'react-icons/hi';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitMessage, setSubmitMessage] = useState('');
   
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setSubmitMessage('');
 
-    // Simulate form submission (frontend-only)
-    setTimeout(() => {
-      console.log('Contact form data:', data);
-      setSubmitStatus('success');
-      reset();
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setSubmitStatus('error');
+      setSubmitMessage('Email service is not configured. Please try again later.');
       setIsSubmitting(false);
-    }, 1000);
+      return;
+    }
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: data.name,
+          email: data.email,
+          subject: data.subject || 'New message from portfolio',
+          message: data.message,
+          reply_to: data.email
+        },
+        { publicKey }
+      );
+
+      setSubmitStatus('success');
+      setSubmitMessage('Thank you! Your message has been sent successfully.');
+      reset();
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setSubmitStatus('error');
+      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -151,7 +182,7 @@ const Contact = () => {
                   className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-600 text-green-700 dark:text-green-300 px-4 py-3 rounded mb-6 flex items-center"
                 >
                   <HiCheck className="mr-2" />
-                  Thank you! Your message has been sent successfully.
+                  {submitMessage || 'Thank you! Your message has been sent successfully.'}
                 </motion.div>
               )}
 
@@ -161,7 +192,7 @@ const Contact = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-300 px-4 py-3 rounded mb-6"
                 >
-                  Sorry, there was an error sending your message. Please try again.
+                  {submitMessage || 'Sorry, there was an error sending your message. Please try again.'}
                 </motion.div>
               )}
 
