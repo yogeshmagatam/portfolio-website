@@ -1,58 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
-import { HiMail, HiPhone, HiLocationMarker, HiCheck } from 'react-icons/hi';
+import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-  const [submitMessage, setSubmitMessage] = useState('');
-  
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
-
-  const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-    setSubmitMessage('');
-
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      setSubmitStatus('error');
-      setSubmitMessage('Email service is not configured. Please try again later.');
-      setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          name: data.name,
-          email: data.email,
-          subject: data.subject || 'New message from portfolio',
-          message: data.message,
-          reply_to: data.email
-        },
-        { publicKey }
-      );
-
-      setSubmitStatus('success');
-      setSubmitMessage('Thank you! Your message has been sent successfully.');
-      reset();
-    } catch (error) {
-      console.error('EmailJS error:', error);
-      setSubmitStatus('error');
-      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
