@@ -64,7 +64,6 @@ portfolio-website/
 - **Framer Motion** - Animation library for React
 - **React Hook Form** - Flexible form validation
 - **React Icons** - Icon library
-- **EmailJS** - Email service for contact forms
 - **PostCSS** - Tool for transforming CSS
 
 ## ⚙️ Prerequisites
@@ -90,14 +89,7 @@ cd frontend
 npm install
 ```
 
-4. Create a `.env.local` file in the frontend folder:
-```env
-VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
-```
-
-5. Start the development server:
+4. Start the development server:
 ```bash
 npm run dev
 ```
@@ -115,18 +107,6 @@ npm run build
 This creates an optimized build in the `dist` folder.
 
 ## 📝 Configuration
-
-### EmailJS Setup
-
-To enable the contact form:
-
-1. Visit [emailjs.com](https://www.emailjs.com/)
-2. Create an account and set up an email service
-3. Create an email template
-4. Add your credentials to `.env.local`:
-   - `VITE_EMAILJS_SERVICE_ID`
-   - `VITE_EMAILJS_TEMPLATE_ID`
-   - `VITE_EMAILJS_PUBLIC_KEY`
 
 ### Tailwind CSS
 
