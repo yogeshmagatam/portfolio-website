@@ -423,36 +423,6 @@ const Home = () => {
                   ))}
                 </motion.div>
               </motion.div>
-              
-              <motion.div 
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <motion.div
-                  className="relative"
-                  whileHover={{ rotateY: 5 }}
-                  transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                >
-                  <motion.div
-                    className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-25"
-                    animate={{
-                      scale: [1, 1.05, 1],
-                      opacity: [0.25, 0.4, 0.25],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                <img
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=400&fit=crop"
-                  alt="Workspace"
-                    className="relative rounded-lg shadow-lg"
-                />
-                </motion.div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
