@@ -371,12 +371,12 @@ const Home = () => {
               About Me
             </motion.h2>
             
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <motion.div variants={itemVariants}>
+            <div className="max-w-4xl mx-auto">
+              <motion.div variants={itemVariants} className="text-center">
                 <motion.p 
                   className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                 >
                   I'm a prompt engineer with 1+ years of experience building scalable prompt engineering applications. 
@@ -385,8 +385,8 @@ const Home = () => {
                 </motion.p>
                 <motion.p 
                   className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
                   When I'm not coding, you can find me contributing to open-source projects, 
@@ -394,7 +394,7 @@ const Home = () => {
                   building software that makes a positive impact on people's lives.
                 </motion.p>
                 <motion.div 
-                  className="flex flex-wrap gap-2"
+                  className="flex flex-wrap gap-2 justify-center"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
