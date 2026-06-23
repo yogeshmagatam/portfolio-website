@@ -76,8 +76,6 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-gray-400">
               <li>Web Development</li>
-              <li>AI model training</li>
-              <li>UI/UX Design</li>
               <li>Prompting Techniques</li>
             </ul>
           </div>
