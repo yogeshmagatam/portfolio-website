@@ -7,20 +7,20 @@ import { FaGithub } from 'react-icons/fa';
 const staticProjects = [
   {
     id: '1',
-    title: 'Online Voting System',
-    description: 'A secure and modern online voting system built with JavaScript. Enables democratic voting processes with user authentication, real-time results, and vote verification features.',
-    technologies: ['JavaScript', 'Node.js', 'MongoDB', 'Express', 'HTML', 'CSS'],
-    image_url: 'https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=500&h=300&fit=crop',
-    github_url: 'https://github.com/yogeshmagatam/Online-Voting-System',
+    title: 'Digital Certificate Management System',
+    description: 'Led a team to architect and develop a blockchain-based certificate management system, ensuring tamper-proof issuance and storage of digital credentials. Implemented QR code–based certificate verification to enable instant authenticity checks and prevent certificate fraud. Designed the end-to-end workflow from certificate generation to verification, integrating blockchain immutability with a user-friendly interface.',
+    technologies: ['React.js', 'Node.js', 'MongoDB', 'Blockchain', 'QR Code API'],
+    image_url: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
+    github_url: 'https://github.com/yogeshmagatam/Digital-Certificate-Management-System',
     live_url: '#',
     featured: true,
-    created_at: '2026-01-23'
+    created_at: '2025-10-20'
   },
   {
     id: '2',
-    title: 'AI Career Advisor Chatbot',
-    description: 'An intelligent career guidance chatbot powered by AI. Built with TypeScript, it provides personalized career recommendations, skill assessments, and professional development advice.',
-    technologies: ['TypeScript', 'AI/ML', 'React', 'Node.js', 'Natural Language Processing'],
+    title: 'AI Career Guidance Chatbot',
+    description: 'Built an AI-powered career advisory chatbot that delivers personalized skill recommendations and career roadmaps based on user input. Leveraged large language model (LLM) APIs and prompt engineering techniques to generate context-aware, actionable career guidance. Developed and submitted as part of a Google Hackathon, demonstrating ability to deliver an end-to-end AI product under time constraints.',
+    technologies: ['Python', 'LLM APIs (Gemini/OpenAI)', 'Prompt Engineering', 'REST APIs'],
     image_url: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=500&h=300&fit=crop',
     github_url: 'https://github.com/yogeshmagatam/AI-Career-Advisor-Chatbot',
     live_url: '#',
@@ -29,36 +29,14 @@ const staticProjects = [
   },
   {
     id: '3',
-    title: 'Digital Certificate Management System',
-    description: 'A comprehensive digital certificate management system built with Python and Flask. Features include secure certificate generation, validation, verification, and management with user authentication.',
-    technologies: ['Python', 'Flask', 'MongoDB', 'HTML', 'CSS', 'JavaScript'],
-    image_url: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-    github_url: 'https://github.com/yogeshmagatam/Digital-Certificate-Management-System',
-    live_url: '#',
-    featured: true,
-    created_at: '2025-10-20'
-  },
-  {
-    id: '4',
-    title: 'Portfolio Website',
-    description: 'A modern, responsive portfolio website built with React and Vite. Features include dark mode, smooth animations, and a beautiful responsive design.',
-    technologies: ['React', 'Python', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    title: 'Personal Portfolio Website',
+    description: 'Designed and developed a fully responsive portfolio website using HTML5, CSS3, and vanilla JavaScript, showcasing projects, skills, and achievements. Ensured cross-device and cross-browser compatibility with a mobile-first responsive design approach.',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'React'],
     image_url: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop',
     github_url: 'https://github.com/yogeshmagatam/portfolio-website',
     live_url: '#',
-    featured: false,
+    featured: true,
     created_at: '2025-07-31'
-  },
-  {
-    id: '5',
-    title: 'Pi Ads',
-    description: 'An innovative digital signage application using Raspberry Pi. Display ads, announcements, and content on screens with remote management, scheduling, and real-time updates.',
-    technologies: ['Python', 'Raspberry Pi', 'Linux', 'GPIO', 'Flask'],
-    image_url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
-    github_url: 'https://github.com/yogeshmagatam/piads',
-    live_url: '#',
-    featured: false,
-    created_at: '2025-06-18'
   }
 ];
 

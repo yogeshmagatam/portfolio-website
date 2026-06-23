@@ -250,9 +250,9 @@ const Home = () => {
               A passionate{' '}
               <TypingAnimation 
                 texts={[
+                  'Software Developer',
                   'AI Prompt Engineer',
                   'Full Stack Developer',
-                  'React Developer',
                   'Problem Solver',
                   'Tech Enthusiast'
                 ]} 
@@ -320,7 +320,7 @@ const Home = () => {
             >
               {[
                 { icon: FaGithub, href: "https://github.com/yogeshmagatam", label: "GitHub" },
-                { icon: FaLinkedin, href: "https://linkedin.com/in/yogeshmagatam", label: "LinkedIn" },
+                { icon: FaLinkedin, href: "https://linkedin.com/in/magatam-yogesh", label: "LinkedIn" },
                 { icon: FaTwitter, href: "https://twitter.com/yogeshmagatam", label: "Twitter" }
               ].map((social, index) => (
                 <motion.a
@@ -379,9 +379,7 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  I'm a prompt engineer with 1+ years of experience building scalable prompt engineering applications. 
-                  I specialize in prompt engineering, and I'm passionate about clean prompts, 
-                  user experience, and continuous learning.
+                  I am a Computer Science Engineering student (graduating May 2026) with hands-on experience in full-stack web development using Python and Generative AI. I am skilled in data structures, algorithms, and prompt engineering, and passionate about building scalable, production-ready applications.
                 </motion.p>
                 <motion.p 
                   className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
@@ -389,9 +387,7 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  When I'm not coding, you can find me contributing to open-source projects, 
-                  writing technical blogs, or exploring the latest tech trends. I believe in 
-                  building software that makes a positive impact on people's lives.
+                  I enjoy participating in hackathons and coding competitions, including Google-hosted hackathons where I build functional AI products. I'm actively interested in AI, Web3, open-source software development, and engaging with the local tech community.
                 </motion.p>
                 <motion.div 
                   className="flex flex-wrap gap-2 justify-center"
@@ -399,7 +395,7 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  {['React', 'Node.js', 'Python', 'TypeScript', 'AWS', 'MongoDB', 'Raspberry Pi'].map((tech, index) => (
+                  {['Python', 'JavaScript', 'TypeScript', 'React', 'Node.js', 'MongoDB', 'SQL', 'Raspberry Pi', 'Generative AI', 'Prompt Engineering'].map((tech, index) => (
                     <motion.span 
                       key={tech} 
                       className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-sm cursor-pointer"
@@ -454,27 +450,27 @@ const Home = () => {
               {/* Featured projects from GitHub profile */}
               {[
                 {
-                  title: "Online Voting System",
-                  description: "A secure online voting system with authentication, real-time results, and vote verification",
-                  image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=400&h=250&fit=crop",
-                  technologies: ["JavaScript", "Node.js", "MongoDB"],
-                  github: "https://github.com/yogeshmagatam/Online-Voting-System",
+                  title: "Digital Certificate Management System",
+                  description: "Led a team to architect and develop a blockchain-based certificate management system, ensuring tamper-proof issuance and storage of digital credentials. Implemented QR code–based certificate verification to enable instant authenticity checks and prevent certificate fraud.",
+                  image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
+                  technologies: ["React.js", "Node.js", "MongoDB", "Blockchain", "QR Code API"],
+                  github: "https://github.com/yogeshmagatam/Digital-Certificate-Management-System",
                   live: "#"
                 },
                 {
-                  title: "AI Career Advisor Chatbot",
-                  description: "An intelligent career guidance chatbot powered by AI for personalized recommendations",
+                  title: "AI Career Guidance Chatbot",
+                  description: "Built an AI-powered career advisory chatbot that delivers personalized skill recommendations and career roadmaps based on user input. Leveraged LLM APIs and prompt engineering techniques to generate context-aware, actionable career guidance.",
                   image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=400&h=250&fit=crop",
-                  technologies: ["TypeScript", "AI/ML", "React"],
+                  technologies: ["Python", "LLM APIs", "Prompt Engineering", "REST APIs"],
                   github: "https://github.com/yogeshmagatam/AI-Career-Advisor-Chatbot",
                   live: "#"
                 },
                 {
-                  title: "Digital Certificate Management",
-                  description: "Comprehensive certificate system with generation, validation, and verification features",
-                  image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
-                  technologies: ["Python", "Flask", "MongoDB"],
-                  github: "https://github.com/yogeshmagatam/Digital-Certificate-Management-System",
+                  title: "Personal Portfolio Website",
+                  description: "Designed and developed a fully responsive portfolio website using HTML5, CSS3, and vanilla JavaScript, showcasing projects, skills, and achievements.",
+                  image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=250&fit=crop",
+                  technologies: ["HTML5", "CSS3", "JavaScript", "React"],
+                  github: "https://github.com/yogeshmagatam/portfolio-website",
                   live: "#"
                 },
               ].map((project, index) => (

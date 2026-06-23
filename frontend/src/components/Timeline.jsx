@@ -27,6 +27,12 @@ const TimelineItem = ({ data, index, type }) => {
           <h3 className="text-xl font-bold text-white mb-1">{data.title}</h3>
           <h4 className="text-neon-purple font-semibold mb-3">{data.organization}</h4>
           <p className="text-gray-400 mb-4">{data.description}</p>
+          {data.gpa && (
+            <div className={`mb-4 flex items-center gap-1 ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
+              <span className="text-xs text-gray-500 font-mono">GPA:</span>
+              <span className="text-sm text-neon-cyan font-bold font-mono">{data.gpa}</span>
+            </div>
+          )}
           {data.technologies && (
             <div className={`flex flex-wrap gap-2 ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
               {data.technologies.map((tech) => (
@@ -65,46 +71,35 @@ const TimelineItem = ({ data, index, type }) => {
 const Timeline = () => {
   const experiences = [
     {
-      period: '2025 - Present',
-      title: 'Full Stack Developer',
-      organization: 'Actively Seeking Opportunities',
-      description: 'Looking for opportunities to contribute to innovative projects using React, Python, TypeScript, and modern web technologies.',
-      technologies: ['React', 'TypeScript', 'Python', 'Node.js', 'MongoDB']
-    },
-    {
-      period: '2024 - 2025',
-      title: 'Freelance Developer',
-      organization: 'Self-Employed',
-      description: 'Built custom web applications for clients, including voting systems, chatbots, and certificate management platforms.',
-      technologies: ['JavaScript', 'Flask', 'MongoDB', 'AI/ML']
-    },
-    {
-      period: '2022 - 2024',
-      title: 'Project Developer',
-      organization: 'Academic Projects',
-      description: 'Developed multiple projects including Digital Certificate Management System, AI Career Advisor Chatbot, and IoT solutions with Raspberry Pi.',
-      technologies: ['Python', 'React', 'Flask', 'Raspberry Pi']
+      period: 'May 2023 - Jun 2023',
+      title: 'Associate Intern',
+      organization: 'Shanrohi Technologies (Pi Ads)',
+      description: 'Designed and deployed a Raspberry Pi-based digital advertising system that automated remote content delivery, replacing manual on-site advertisement updates for ~5 client locations. Developed a full-stack web application (HTML/CSS/JS + backend API) enabling clients to remotely upload and schedule advertisement videos, reducing operational overhead by eliminating on-site visits. Implemented scripted content scheduling logic that improved system automation and allowed unattended 24/7 ad rotation across deployed devices.',
+      technologies: ['Raspberry Pi', 'Python', 'Flask', 'JavaScript', 'HTML/CSS', 'Linux']
     }
   ];
 
   const education = [
     {
       period: '2022 - 2026',
-      title: 'Bachelor of Technology',
-      organization: 'Computer Science Engineering',
-      description: 'Focused on software development, data structures, algorithms, and modern web technologies.',
+      title: 'B. Tech in Computer Science & Engineering',
+      organization: 'Holy Mary Institute of Technology and Science, Telangana',
+      description: 'Focused on software development, data structures, algorithms, and prompt engineering.',
+      gpa: '7.0'
     },
     {
       period: '2020 - 2022',
-      title: 'Intermediate',
-      organization: 'Secondary Education',
-      description: 'Completed with distinction in Mathematics, Physics, and Computer Science.',
+      title: 'Intermediate (MPC)',
+      organization: 'Narayana Junior College, Telangana',
+      description: 'Mathematics, Physics, Chemistry stream.',
+      gpa: '6.9'
     },
     {
       period: '2015 - 2020',
-      title: 'High School',
-      organization: 'Secondary School',
-      description: 'Completed foundational education with focus on Science and Mathematics.',
+      title: 'High School (SSC)',
+      organization: 'New Little Lilly High School, Telangana',
+      description: 'Secondary School Certificate foundational studies.',
+      gpa: '9.2'
     }
   ];
 

@@ -15,7 +15,7 @@ const Footer = () => {
               M Yogesh Vishwanath
             </h3>
             <p className="text-gray-400 mb-4">
-              AI Prompt Engineer passionate about creating meaningful digital experiences.
+              Software Developer & Prompt Engineer passionate about creating meaningful digital experiences.
             </p>
             <div className="flex space-x-4">
               <a 
@@ -26,7 +26,7 @@ const Footer = () => {
                 <FaGithub size={20} />
               </a>
               <a 
-                href="https://linkedin.com/in/yogeshmagatam" 
+                href="https://linkedin.com/in/magatam-yogesh" 
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >

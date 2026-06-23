@@ -91,9 +91,9 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: FaGithub, label: 'GitHub', href: 'https://github.com/johndoe' },
-    { icon: FaLinkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/johndoe' },
-    { icon: FaTwitter, label: 'Twitter', href: 'https://twitter.com/johndoe' }
+    { icon: FaGithub, label: 'GitHub', href: 'https://github.com/yogeshmagatam' },
+    { icon: FaLinkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/magatam-yogesh' },
+    { icon: FaTwitter, label: 'Twitter', href: 'https://twitter.com/yogeshmagatam' }
   ];
 
   return (
