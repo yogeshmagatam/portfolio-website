@@ -1,47 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const SkillCard = ({ skill, category, level, delay = 0 }) => {
+const SkillCard = ({ skill, delay = 0 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="glass-card p-6 hover:shadow-neon transition-all duration-300 group"
-      whileHover={{ y: -5, scale: 1.02 }}
+      transition={{ duration: 0.4, delay }}
+      className="glass-card px-5 py-4 hover:shadow-neon transition-all duration-300 group cursor-default"
+      whileHover={{ y: -4, scale: 1.05 }}
     >
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-white group-hover:text-neon-cyan transition-colors">
-          {skill}
-        </h3>
-        <span className="text-neon-blue text-sm font-mono">{level}%</span>
-      </div>
-      
-      {/* Animated Progress Bar */}
-      <div className="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${level}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: delay + 0.2, ease: "easeOut" }}
-          className="h-full bg-gradient-to-r from-neon-blue via-neon-purple to-neon-cyan rounded-full relative"
-        >
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30"
-            animate={{
-              x: ['-100%', '200%'],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        </motion.div>
-      </div>
-      
-      <div className="mt-2 text-xs text-gray-400 font-mono">{category}</div>
+      <span className="text-base font-semibold text-white group-hover:text-neon-cyan transition-colors">
+        {skill}
+      </span>
     </motion.div>
   );
 };
@@ -49,28 +21,23 @@ const SkillCard = ({ skill, category, level, delay = 0 }) => {
 const SkillsSection = () => {
   const skills = {
     Frontend: [
-      { name: 'React', level: 90 },
-      { name: 'JavaScript', level: 88 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'Tailwind CSS', level: 92 },
-      { name: 'HTML/CSS', level: 95 },
-      { name: 'Framer Motion', level: 80 },
+      'React',
+      'JavaScript',
+      'TypeScript',
+      'Tailwind CSS',
+      'HTML/CSS',
     ],
     Backend: [
-      { name: 'Node.js', level: 85 },
-      { name: 'Python', level: 88 },
-      { name: 'Flask', level: 82 },
-      { name: 'MongoDB', level: 80 },
-      { name: 'Express.js', level: 83 },
-      { name: 'REST APIs', level: 87 },
+      'Node.js',
+      'Python',
+      'Flask',
+      'MongoDB',
     ],
     Tools: [
-      { name: 'Git', level: 90 },
-      { name: 'VS Code', level: 95 },
-      { name: 'Figma', level: 75 },
-      { name: 'Vite', level: 85 },
-      { name: 'Raspberry Pi', level: 78 },
-      { name: 'Linux', level: 80 },
+      'Git',
+      'VS Code',
+      'Raspberry Pi',
+      'Linux',
     ]
   };
 
@@ -144,14 +111,12 @@ const SkillsSection = () => {
               <span className="w-2 h-8 bg-gradient-to-b from-neon-blue to-neon-purple rounded mr-3" />
               {category}
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-wrap gap-4">
               {skillList.map((skill, index) => (
                 <SkillCard
-                  key={skill.name}
-                  skill={skill.name}
-                  category={category}
-                  level={skill.level}
-                  delay={index * 0.1}
+                  key={skill}
+                  skill={skill}
+                  delay={index * 0.08}
                 />
               ))}
             </div>
