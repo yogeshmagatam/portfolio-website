@@ -20,24 +20,29 @@ const SkillCard = ({ skill, delay = 0 }) => {
 
 const SkillsSection = () => {
   const skills = {
-    Frontend: [
-      'React',
-      'JavaScript',
-      'TypeScript',
-      'Tailwind CSS',
-      'HTML/CSS',
-    ],
-    Backend: [
-      'Node.js',
+    'Languages': [
       'Python',
-      'Flask',
-      'MongoDB',
+      'JavaScript',
+      'HTML5',
+      'CSS3',
+      'SQL',
     ],
-    Tools: [
+    'AI & Machine Learning': [
+      'Generative AI',
+      'Prompt Engineering',
+    ],
+    'Developer Tools': [
       'Git',
+      'GitHub',
       'VS Code',
-      'Raspberry Pi',
-      'Linux',
+      'Antigravity',
+    ],
+    'Soft Skills': [
+      'Team Collaboration',
+      'Problem-Solving',
+      'Leadership',
+      'Analytical Thinking',
+      'Presentation Skills',
     ]
   };
 

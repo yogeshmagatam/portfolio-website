@@ -14,29 +14,29 @@ const staticProjects = [
     github_url: 'https://github.com/yogeshmagatam/Digital-Certificate-Management-System',
     live_url: '#',
     featured: true,
-    created_at: '2025-10-20'
+    created_at: '2026-05-15'
   },
   {
     id: '2',
-    title: 'AI Career Guidance Chatbot',
+    title: 'AI Career Guidance Chatbot — Google Hackathon',
     description: 'Built an AI-powered career advisory chatbot that delivers personalized skill recommendations and career roadmaps based on user input. Leveraged large language model (LLM) APIs and prompt engineering techniques to generate context-aware, actionable career guidance. Developed and submitted as part of a Google Hackathon, demonstrating ability to deliver an end-to-end AI product under time constraints.',
     technologies: ['Python', 'LLM APIs (Gemini/OpenAI)', 'Prompt Engineering', 'REST APIs'],
     image_url: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=500&h=300&fit=crop',
     github_url: 'https://github.com/yogeshmagatam/AI-Career-Advisor-Chatbot',
     live_url: '#',
     featured: true,
-    created_at: '2025-11-18'
+    created_at: '2026-04-10'
   },
   {
     id: '3',
-    title: 'Personal Portfolio Website',
-    description: 'Designed and developed a fully responsive portfolio website using HTML5, CSS3, and vanilla JavaScript, showcasing projects, skills, and achievements. Ensured cross-device and cross-browser compatibility with a mobile-first responsive design approach.',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'React'],
-    image_url: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop',
-    github_url: 'https://github.com/yogeshmagatam/portfolio-website',
+    title: 'Online Voting System',
+    description: 'Designed and developed a comprehensive web-based election system using React, Flask, MongoDB, and scikit-learn, featuring MFA with email OTP, bcrypt password hashing, photo-based identity verification, secure vote casting with transaction IDs, JWT-secured role-based access (Voter/Admin) via React Router v6, an admin dashboard with fraud analytics, and public pages. Implemented AI-powered fraud detection using a local Random Forest model analysing 3000+ voter behavioural features to flag suspicious activity in real time, supported by a complete audit trail and Docker-ready deployment.',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Flask', 'MongoDB', 'scikit-learn', 'Docker'],
+    image_url: 'https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=500&h=300&fit=crop',
+    github_url: 'https://github.com/yogeshmagatam/Online-Voting-System',
     live_url: '#',
     featured: true,
-    created_at: '2025-07-31'
+    created_at: '2026-03-01'
   }
 ];
 

@@ -216,7 +216,7 @@ const Home = () => {
               />
               <img
                 src={yogeshImage}
-                alt="Magatam Yogesh Vishwanath"
+                alt="M Yogesh Vishwanath"
                 className="relative w-32 h-32 rounded-full mx-auto mb-6 shadow-lg object-cover border-4 border-white"
               />
             </motion.div>
@@ -239,7 +239,7 @@ const Home = () => {
                   backgroundSize: "200% 200%",
                 }}
               >
-                Magatam Yogesh Vishwanath
+                M Yogesh Vishwanath
               </motion.span>
             </motion.h1>
             
@@ -253,8 +253,7 @@ const Home = () => {
                   'Software Developer',
                   'AI Prompt Engineer',
                   'Full Stack Developer',
-                  'Problem Solver',
-                  'Tech Enthusiast'
+                  'Problem Solver'
                 ]} 
                 className="text-xl md:text-2xl"
               />
@@ -264,7 +263,7 @@ const Home = () => {
               variants={itemVariants}
               className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
             >
-              who loves creating beautiful and functional applications with modern technologies.
+              Computer Science Engineering fresher (graduated May 2026) with hands-on experience in full-stack web development using Python programming and Generative AI. Skilled in prompt engineering and problem solving.
             </motion.p>
             
             <motion.div 
@@ -296,7 +295,7 @@ const Home = () => {
                 transition={{ type: "spring", stiffness: 300 }}
               >
               <a 
-                href="/resume.pdf" 
+                href="/Yogesh_Resume_ATS_1.pdf" 
                 download 
                   className="btn-secondary inline-flex items-center relative overflow-hidden group"
                 >
@@ -379,7 +378,7 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  I am a Computer Science Engineering student (graduating May 2026) with hands-on experience in full-stack web development using Python and Generative AI. I am skilled in data structures, algorithms, and prompt engineering, and passionate about building scalable, production-ready applications.
+                  Computer Science Engineering fresher (graduated May 2026) with hands-on experience in full-stack web development using Python programming and Generative AI. Skilled in prompt engineering and problem solving. Built real-world projects including an AI-powered chatbot. Seeking a Software Developer or Prompt Engineer role where I can contribute to scalable, production-ready applications.
                 </motion.p>
                 <motion.p 
                   className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
@@ -387,7 +386,7 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  I enjoy participating in hackathons and coding competitions, including Google-hosted hackathons where I build functional AI products. I'm actively interested in AI, Web3, open-source software development, and engaging with the local tech community.
+                  Active participant in hackathons and coding competitions, including a Google-hosted hackathon where I built and submitted a functional AI product. Passionate about Generative AI, Web3, open-source software development, music production, and engaging with the local tech community.
                 </motion.p>
                 <motion.div 
                   className="flex flex-wrap gap-2 justify-center"
@@ -395,7 +394,7 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  {['Python', 'JavaScript', 'TypeScript', 'React', 'Node.js', 'MongoDB', 'SQL', 'Raspberry Pi', 'Generative AI', 'Prompt Engineering'].map((tech, index) => (
+                  {['Python', 'JavaScript', 'HTML5', 'CSS3', 'SQL', 'Generative AI', 'Prompt Engineering', 'Git', 'GitHub', 'VS Code', 'Antigravity'].map((tech, index) => (
                     <motion.span 
                       key={tech} 
                       className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-sm cursor-pointer"
@@ -447,7 +446,7 @@ const Home = () => {
             </motion.div>
             
             <div className="grid md:grid-cols-3 gap-8">
-              {/* Featured projects from GitHub profile */}
+              {/* Featured projects from ATS resume */}
               {[
                 {
                   title: "Digital Certificate Management System",
@@ -458,19 +457,19 @@ const Home = () => {
                   live: "#"
                 },
                 {
-                  title: "AI Career Guidance Chatbot",
-                  description: "Built an AI-powered career advisory chatbot that delivers personalized skill recommendations and career roadmaps based on user input. Leveraged LLM APIs and prompt engineering techniques to generate context-aware, actionable career guidance.",
+                  title: "AI Career Guidance Chatbot — Google Hackathon",
+                  description: "Built an AI-powered career advisory chatbot that delivers personalized skill recommendations and career roadmaps based on user input. Leveraged large language model (LLM) APIs and prompt engineering techniques to generate context-aware, actionable career guidance.",
                   image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=400&h=250&fit=crop",
-                  technologies: ["Python", "LLM APIs", "Prompt Engineering", "REST APIs"],
+                  technologies: ["Python", "LLM APIs (Gemini/OpenAI)", "Prompt Engineering", "REST APIs"],
                   github: "https://github.com/yogeshmagatam/AI-Career-Advisor-Chatbot",
                   live: "#"
                 },
                 {
-                  title: "Personal Portfolio Website",
-                  description: "Designed and developed a fully responsive portfolio website using HTML5, CSS3, and vanilla JavaScript, showcasing projects, skills, and achievements.",
-                  image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=250&fit=crop",
-                  technologies: ["HTML5", "CSS3", "JavaScript", "React"],
-                  github: "https://github.com/yogeshmagatam/portfolio-website",
+                  title: "Online Voting System",
+                  description: "Designed and developed a comprehensive web-based election system featuring MFA with email OTP, bcrypt hashing, photo identity verification, JWT-secured role-based access, and AI-powered fraud detection using a local Random Forest model analysing 3000+ voter behavioural features.",
+                  image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=400&h=250&fit=crop",
+                  technologies: ["HTML5", "CSS3", "JavaScript", "React", "Flask", "MongoDB", "scikit-learn"],
+                  github: "https://github.com/yogeshmagatam/Online-Voting-System",
                   live: "#"
                 },
               ].map((project, index) => (
@@ -494,12 +493,14 @@ const Home = () => {
                     ))}
                   </div>
                   <div className="flex space-x-4">
-                    <a href={project.github} className="text-primary-600 hover:text-primary-700">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700">
                       <FaGithub className="inline mr-1" /> Code
                     </a>
-                    <a href={project.live} className="text-primary-600 hover:text-primary-700">
-                      <HiExternalLink className="inline mr-1" /> Live
-                    </a>
+                    {project.live !== "#" && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700">
+                        <HiExternalLink className="inline mr-1" /> Live
+                      </a>
+                    )}
                   </div>
                 </motion.div>
               ))}

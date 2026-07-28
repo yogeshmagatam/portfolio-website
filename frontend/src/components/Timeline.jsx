@@ -71,31 +71,31 @@ const TimelineItem = ({ data, index, type }) => {
 const Timeline = () => {
   const experiences = [
     {
-      period: 'May 2023 - Jun 2023',
-      title: 'Associate Intern',
-      organization: 'Shanrohi Technologies (Pi Ads)',
-      description: 'Designed and deployed a Raspberry Pi-based digital advertising system that automated remote content delivery, replacing manual on-site advertisement updates for ~5 client locations. Developed a full-stack web application (HTML/CSS/JS + backend API) enabling clients to remotely upload and schedule advertisement videos, reducing operational overhead by eliminating on-site visits. Implemented scripted content scheduling logic that improved system automation and allowed unattended 24/7 ad rotation across deployed devices.',
-      technologies: ['Raspberry Pi', 'Python', 'Flask', 'JavaScript', 'HTML/CSS', 'Linux']
+      period: 'Jun 2026 – Aug 2026',
+      title: 'Prompt Engineer Intern',
+      organization: 'Super Teacher Edu Reforms, Hyderabad, India',
+      description: 'Designed and deployed an LMS portal that helps teachers conduct assessments and students understand courses and attend assessments. Implemented scripted content scheduling logic that improved system automation and allowed unattended 24/7 ad rotation across deployed devices.',
+      technologies: ['Generative AI', 'Prompt Engineering', 'LMS Portal', 'Content Scheduling', 'Python']
     }
   ];
 
   const education = [
     {
-      period: '2022 - 2026',
+      period: 'Graduated May 2026',
       title: 'B. Tech in Computer Science & Engineering',
       organization: 'Holy Mary Institute of Technology and Science, Telangana',
       description: 'Focused on software development, data structures, algorithms, and prompt engineering.',
       gpa: '7.0'
     },
     {
-      period: '2020 - 2022',
+      period: 'May 2022',
       title: 'Intermediate (MPC)',
       organization: 'Narayana Junior College, Telangana',
       description: 'Mathematics, Physics, Chemistry stream.',
       gpa: '6.9'
     },
     {
-      period: '2015 - 2020',
+      period: 'March 2020',
       title: 'High School (SSC)',
       organization: 'New Little Lilly High School, Telangana',
       description: 'Secondary School Certificate foundational studies.',
