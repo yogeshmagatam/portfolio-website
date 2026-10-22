@@ -4,11 +4,19 @@ import { HiExternalLink, HiCode, HiSearch } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
 
 // Static projects data
+// Static projects data matching updated ATS resume
 const staticProjects = [
   {
     id: '1',
     title: 'Digital Certificate Management System',
-    description: 'Led a team to architect and develop a blockchain-based certificate management system, ensuring tamper-proof issuance and storage of digital credentials. Implemented QR code–based certificate verification to enable instant authenticity checks and prevent certificate fraud. Designed the end-to-end workflow from certificate generation to verification, integrating blockchain immutability with a user-friendly interface.',
+    role: 'Team Lead',
+    tag: 'Blockchain & Web3',
+    description: 'Led a team to design and build a blockchain-backed system for tamper-proof issuing and storing of digital certificates. Implemented QR-code verification so anyone can confirm a certificate\'s authenticity instantly, preventing forgery.',
+    bullets: [
+      'Led a team to design and build a blockchain-backed system for tamper-proof issuing and storing of digital certificates.',
+      'Implemented QR-code verification so anyone can confirm a certificate\'s authenticity instantly, preventing forgery.',
+      'Designed end-to-end issuance and verification workflows with MongoDB persistence and REST APIs.'
+    ],
     technologies: ['React.js', 'Node.js', 'MongoDB', 'Blockchain', 'QR Code API'],
     image_url: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
     github_url: 'https://github.com/yogeshmagatam/Digital-Certificate-Management-System',
@@ -19,8 +27,15 @@ const staticProjects = [
   {
     id: '2',
     title: 'AI Career Guidance Chatbot — Google Hackathon',
-    description: 'Built an AI-powered career advisory chatbot that delivers personalized skill recommendations and career roadmaps based on user input. Leveraged large language model (LLM) APIs and prompt engineering techniques to generate context-aware, actionable career guidance. Developed and submitted as part of a Google Hackathon, demonstrating ability to deliver an end-to-end AI product under time constraints.',
-    technologies: ['Python', 'LLM APIs (Gemini/OpenAI)', 'Prompt Engineering', 'REST APIs'],
+    role: 'Sole Developer',
+    tag: 'Google Hackathon',
+    description: 'Built an LLM-powered career advisor that generates personalised skill recommendations and career roadmaps from user input. Leveraged large language model (LLM) APIs and prompt engineering techniques to generate context-aware, actionable career guidance. Developed and submitted as part of a Google Hackathon, demonstrating ability to deliver an end-to-end AI product under time constraints.',
+    bullets: [
+      'Built an LLM-powered career advisor that generates personalised skill recommendations and career roadmaps from user input.',
+      'Leveraged large language model (LLM) APIs and prompt engineering techniques to generate context-aware, actionable career guidance.',
+      'Developed and submitted as part of a Google Hackathon, delivering an end-to-end AI product under strict time constraints.'
+    ],
+    technologies: ['Python', 'Gemini / OpenAI APIs', 'Prompt Engineering', 'REST APIs'],
     image_url: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=500&h=300&fit=crop',
     github_url: 'https://github.com/yogeshmagatam/AI-Career-Advisor-Chatbot',
     live_url: '#',
@@ -29,14 +44,39 @@ const staticProjects = [
   },
   {
     id: '3',
-    title: 'Online Voting System',
-    description: 'Designed and developed a comprehensive web-based election system using React, Flask, MongoDB, and scikit-learn, featuring MFA with email OTP, bcrypt password hashing, photo-based identity verification, secure vote casting with transaction IDs, JWT-secured role-based access (Voter/Admin) via React Router v6, an admin dashboard with fraud analytics, and public pages. Implemented AI-powered fraud detection using a local Random Forest model analysing 3000+ voter behavioural features to flag suspicious activity in real time, supported by a complete audit trail and Docker-ready deployment.',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Flask', 'MongoDB', 'scikit-learn', 'Docker'],
+    title: 'Online Voting System with AI Fraud Detection',
+    role: 'Full Stack & AI Engineer',
+    tag: 'AI & Security',
+    description: 'Built a full-stack election platform with role-based access (Voter / Admin), JWT auth, email-OTP multi-factor login, bcrypt password hashing and photo-based identity verification. Features AI fraud detection via a scikit-learn Random Forest model analyzing voter behavioural features in real time, with Docker deployment.',
+    bullets: [
+      'Built a full-stack election platform with role-based access (Voter / Admin), JWT auth, email-OTP multi-factor login, bcrypt password hashing and photo-based identity verification.',
+      'Integrated AI fraud detection using a local Random Forest model analysing voter behavioural features in real time.',
+      'Designed prompts for context-aware, actionable answers; shipped a working end-to-end product within the hackathon deadline.'
+    ],
+    technologies: ['React', 'Flask', 'MongoDB', 'scikit-learn', 'JWT', 'Docker'],
     image_url: 'https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=500&h=300&fit=crop',
     github_url: 'https://github.com/yogeshmagatam/Online-Voting-System',
     live_url: '#',
     featured: true,
     created_at: '2026-03-01'
+  },
+  {
+    id: '4',
+    title: 'Invoice & Receipt Sorter Web App',
+    role: 'Open Source Contributor',
+    tag: 'DEV Hacktoberfest 2026',
+    description: 'Built a privacy-first invoice and receipt sorter web app for freelancers participating in the DEV Hacktoberfest 2026 Open-Source AI Challenge. Enables automatic parsing, field extraction, and intelligent categorization of receipts.',
+    bullets: [
+      'Built a privacy-first invoice and receipt sorter web app for freelancers.',
+      'Participant in the DEV Hacktoberfest 2026 Open-Source AI Challenge.',
+      'Implemented automated document parsing, field extraction, and categorization using LLM APIs.'
+    ],
+    technologies: ['React.js', 'Python', 'Generative AI', 'Prompt Engineering', 'REST APIs'],
+    image_url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=300&fit=crop',
+    github_url: 'https://github.com/yogeshmagatam',
+    live_url: '#',
+    featured: false,
+    created_at: '2026-10-01'
   }
 ];
 
@@ -54,6 +94,8 @@ const Projects = () => {
       filtered = filtered.filter(project =>
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (project.role && project.role.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (project.tag && project.tag.toLowerCase().includes(searchTerm.toLowerCase())) ||
         project.technologies.some(tech => 
           tech.toLowerCase().includes(searchTerm.toLowerCase())
         )
@@ -162,15 +204,32 @@ const Projects = () => {
         <div className="container">
           <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
             {/* Search */}
-            <div className="relative flex-1 max-w-md">
+            <div className="relative flex-1 max-w-md w-full">
               <HiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
-                placeholder="Search projects..."
+                placeholder="Search projects by name, role, tech..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm"
               />
+            </div>
+
+            {/* Filter Pills */}
+            <div className="flex flex-wrap gap-2 items-center">
+              {allTechnologies.map((tech) => (
+                <button
+                  key={tech}
+                  onClick={() => setSelectedTech(tech)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                    selectedTech === tech
+                      ? 'bg-primary-600 text-white shadow-md'
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  {tech}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -194,7 +253,7 @@ const Projects = () => {
                 <motion.div
                   key={project.id}
                   variants={itemVariants}
-                  className="card card-3d glow-on-hover group"
+                  className="card card-3d glow-on-hover group flex flex-col justify-between"
                   whileHover={{ 
                     y: -10,
                     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
@@ -211,45 +270,55 @@ const Projects = () => {
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       />
-                      {project.featured && (
-                        <motion.div 
-                          className="absolute top-3 left-3 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-medium"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          Featured
-                        </motion.div>
-                      )}
+                      <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                        {project.featured && (
+                          <span className="bg-primary-600 text-white px-2.5 py-0.5 rounded-full text-xs font-semibold shadow">
+                            Featured
+                          </span>
+                        )}
+                        {project.role && (
+                          <span className="bg-amber-500 text-white px-2.5 py-0.5 rounded-full text-xs font-semibold shadow">
+                            {project.role}
+                          </span>
+                        )}
+                        {project.tag && (
+                          <span className="bg-purple-600 text-white px-2.5 py-0.5 rounded-full text-xs font-semibold shadow">
+                            {project.tag}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     {/* Project Info */}
-                    <h3 className="text-xl font-semibold mb-3 dark:text-white">{project.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{project.description}</p>
+                    <h3 className="text-xl font-bold mb-2 dark:text-white">{project.title}</h3>
+
+                    {project.bullets ? (
+                      <ul className="text-gray-600 dark:text-gray-300 mb-4 space-y-1.5 text-sm">
+                        {project.bullets.map((bullet, bIdx) => (
+                          <li key={bIdx} className="flex items-start gap-1.5">
+                            <span className="text-primary-500 font-bold select-none">›</span>
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">{project.description}</p>
+                    )}
 
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.slice(0, 4).map((tech, techIndex) => (
-                        <motion.span
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {project.technologies.map((tech) => (
+                        <span
                           key={tech}
-                          className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 + techIndex * 0.05 }}
-                          whileHover={{ scale: 1.1, backgroundColor: "#3B82F6", color: "white" }}
+                          className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded font-medium"
                         >
                           {tech}
-                        </motion.span>
-                      ))}
-                      {project.technologies.length > 4 && (
-                        <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded">
-                          +{project.technologies.length - 4}
                         </span>
-                      )}
+                      ))}
                     </div>
 
                     {/* Links */}
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-4 pt-2 border-t border-gray-100 dark:border-gray-700">
                       {project.github_url && (
                         <motion.a
                           href={project.github_url}

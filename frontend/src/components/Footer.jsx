@@ -15,7 +15,7 @@ const Footer = () => {
               M Yogesh Vishwanath
             </h3>
             <p className="text-gray-400 mb-4">
-              Software Developer & Prompt Engineer passionate about creating meaningful digital experiences.
+              Full Stack Developer & AI Engineer building secure, production web platforms, desktop applications, and generative AI systems.
             </p>
             <div className="flex space-x-4">
               <a 
@@ -71,12 +71,14 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Core Areas */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li>Web Development</li>
-              <li>Prompting Techniques</li>
+            <h4 className="text-lg font-semibold mb-4">Core Focus</h4>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>Full Stack Web Apps (React, Node, Flask)</li>
+              <li>Desktop Apps (Tauri + React)</li>
+              <li>Generative AI & LLM Integrations</li>
+              <li>Authentication & Fraud Detection</li>
             </ul>
           </div>
 

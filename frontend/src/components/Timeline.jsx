@@ -26,7 +26,18 @@ const TimelineItem = ({ data, index, type }) => {
           </div>
           <h3 className="text-xl font-bold text-white mb-1">{data.title}</h3>
           <h4 className="text-neon-purple font-semibold mb-3">{data.organization}</h4>
-          <p className="text-gray-400 mb-4">{data.description}</p>
+          {data.bullets ? (
+            <ul className="text-gray-300 mb-4 space-y-2 text-sm">
+              {data.bullets.map((bullet, bIdx) => (
+                <li key={bIdx} className={`flex items-start gap-2 ${isLeft ? 'md:flex-row-reverse md:text-right' : 'md:flex-row md:text-left'}`}>
+                  <span className="text-neon-cyan mt-1 select-none font-bold">›</span>
+                  <span className="text-gray-300">{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-gray-400 mb-4">{data.description}</p>
+          )}
           {data.gpa && (
             <div className={`mb-4 flex items-center gap-1 ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
               <span className="text-xs text-gray-500 font-mono">GPA:</span>
@@ -71,27 +82,32 @@ const TimelineItem = ({ data, index, type }) => {
 const Timeline = () => {
   const experiences = [
     {
-      period: 'Jun 2026 – Aug 2026',
-      title: 'Prompt Engineer Intern',
-      organization: 'Super Teacher Edu Reforms, Hyderabad, India',
-      description: 'Designed and deployed an LMS portal that helps teachers conduct assessments and students understand courses and attend assessments. Implemented scripted content scheduling logic that improved system automation and allowed unattended 24/7 ad rotation across deployed devices.',
-      technologies: ['Generative AI', 'Prompt Engineering', 'LMS Portal', 'Content Scheduling', 'Python']
+      period: 'Jun 2026 – Present',
+      title: 'Full Stack Developer Intern',
+      organization: 'Super Teacher Edu Reforms Pvt. Ltd., Hyderabad',
+      bullets: [
+        'Designed, developed and deployed a Learning Management System (LMS) web portal that lets teachers create and run assessments and lets students follow courses, read ebooks and take tests online.',
+        'Building a Windows desktop version of the LMS with Tauri + React, adding encrypted ebooks that students can read offline, written to a formal product requirements document (PRD).',
+        'Adapting the LMS into an Android app for Google Play Store release, reusing the existing web codebase.',
+        'Implemented scripted content-scheduling logic that automated ad rotation, enabling unattended 24/7 operation across deployed display devices.'
+      ],
+      technologies: ['React.js', 'Tauri (Desktop)', 'Node.js', 'Python (Flask)', 'MongoDB', 'Android', 'Automation']
     }
   ];
 
   const education = [
     {
-      period: 'Graduated May 2026',
+      period: 'May 2026',
       title: 'B. Tech in Computer Science & Engineering',
       organization: 'Holy Mary Institute of Technology and Science, Telangana',
-      description: 'Focused on software development, data structures, algorithms, and prompt engineering.',
+      description: 'Focused on full-stack software development, data structures, algorithms, databases, and AI-powered application architecture.',
       gpa: '7.0'
     },
     {
       period: 'May 2022',
       title: 'Intermediate (MPC)',
       organization: 'Narayana Junior College, Telangana',
-      description: 'Mathematics, Physics, Chemistry stream.',
+      description: 'Mathematics, Physics, and Chemistry stream foundational analytical studies.',
       gpa: '6.9'
     },
     {

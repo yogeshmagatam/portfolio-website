@@ -22,27 +22,41 @@ const SkillsSection = () => {
   const skills = {
     'Languages': [
       'Python',
-      'JavaScript',
+      'JavaScript (ES6+)',
+      'SQL',
       'HTML5',
       'CSS3',
+    ],
+    'Frontend': [
+      'React.js',
+      'React Router',
+      'Responsive UI',
+    ],
+    'Backend': [
+      'Node.js',
+      'Flask',
+      'REST APIs',
+      'JWT Authentication',
+      'MFA / OTP',
+      'bcrypt',
+    ],
+    'Databases': [
+      'MongoDB',
       'SQL',
     ],
-    'AI & Machine Learning': [
+    'AI / ML': [
       'Generative AI',
+      'LLM APIs (Gemini, OpenAI)',
       'Prompt Engineering',
+      'scikit-learn (Random Forest)',
     ],
-    'Developer Tools': [
+    'Tools & DevOps': [
       'Git',
       'GitHub',
+      'Docker',
       'VS Code',
-      'Antigravity',
-    ],
-    'Soft Skills': [
-      'Team Collaboration',
-      'Problem-Solving',
-      'Leadership',
-      'Analytical Thinking',
-      'Presentation Skills',
+      'Google Antigravity',
+      'Tauri (desktop apps)',
     ]
   };
 
