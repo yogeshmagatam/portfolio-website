@@ -22,7 +22,7 @@ const Terms = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
       {/* Animated Background */}
       <motion.div
-        className="absolute top-20 left-10 w-96 h-96 bg-purple-400 dark:bg-purple-600 rounded-full opacity-10 blur-3xl"
+        className="absolute top-20 left-10 w-96 h-96 bg-purple-400 dark:bg-purple-600 rounded-full opacity-10 blur-3xl pointer-events-none"
         animate={{
           x: [0, -100, 0],
           y: [0, 50, 0],
@@ -35,7 +35,7 @@ const Terms = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-pink-400 dark:bg-pink-600 rounded-full opacity-10 blur-3xl"
+        className="absolute bottom-20 right-10 w-96 h-96 bg-pink-400 dark:bg-pink-600 rounded-full opacity-10 blur-3xl pointer-events-none"
         animate={{
           x: [0, 80, 0],
           y: [0, -60, 0],

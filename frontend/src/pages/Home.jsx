@@ -77,7 +77,7 @@ const Home = () => {
     <div className="min-h-screen relative overflow-hidden bg-dark-900">
       {/* Animated Background Elements - Neon Theme */}
       <motion.div
-        className="absolute top-20 left-10 w-96 h-96 bg-neon-blue opacity-10 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-96 h-96 bg-neon-blue opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
@@ -90,7 +90,7 @@ const Home = () => {
         }}
       />
       <motion.div
-        className="absolute top-40 right-20 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl"
+        className="absolute top-40 right-20 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           x: [0, -80, 0],
           y: [0, 60, 0],
@@ -103,7 +103,7 @@ const Home = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-40 left-1/4 w-72 h-72 bg-neon-cyan opacity-10 rounded-full blur-3xl"
+        className="absolute bottom-40 left-1/4 w-72 h-72 bg-neon-cyan opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           x: [0, 60, 0],
           y: [0, -40, 0],
@@ -118,7 +118,7 @@ const Home = () => {
 
       {/* Additional Floating Elements */}
       <motion.div
-        className="absolute top-1/3 right-1/4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 dark:from-yellow-500 dark:to-orange-600 rounded-full opacity-30 dark:opacity-40"
+        className="absolute top-1/3 right-1/4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 dark:from-yellow-500 dark:to-orange-600 rounded-full opacity-30 dark:opacity-40 pointer-events-none"
         animate={{
           y: [0, -30, 0],
           rotate: [0, 180, 360],
@@ -130,7 +130,7 @@ const Home = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-1/3 left-1/3 w-12 h-12 bg-gradient-to-r from-indigo-400 to-purple-500 dark:from-indigo-500 dark:to-purple-600 rounded-full opacity-25 dark:opacity-35"
+        className="absolute bottom-1/3 left-1/3 w-12 h-12 bg-gradient-to-r from-indigo-400 to-purple-500 dark:from-indigo-500 dark:to-purple-600 rounded-full opacity-25 dark:opacity-35 pointer-events-none"
         animate={{
           x: [0, 40, 0],
           scale: [1, 1.2, 1],
@@ -146,7 +146,7 @@ const Home = () => {
       {[...Array(6)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-white dark:bg-blue-400 rounded-full opacity-60 dark:opacity-80"
+          className="absolute w-2 h-2 bg-white dark:bg-blue-400 rounded-full opacity-60 dark:opacity-80 pointer-events-none"
           style={{
             left: `${20 + (i * 15)}%`,
             top: `${10 + (i % 2 * 30)}%`,
@@ -169,7 +169,7 @@ const Home = () => {
       {techIcons.map((tech, index) => (
         <motion.div
           key={tech.name}
-          className={`absolute text-4xl ${tech.color} opacity-30 dark:opacity-50`}
+          className={`absolute text-4xl ${tech.color} opacity-30 dark:opacity-50 pointer-events-none`}
           style={{
             left: `${20 + (index * 15)}%`,
             top: `${30 + (index % 2 * 20)}%`,

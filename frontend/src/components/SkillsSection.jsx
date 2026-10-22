@@ -75,7 +75,7 @@ const SkillsSection = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900" />
       <motion.div
-        className="absolute top-1/4 -left-20 w-96 h-96 bg-neon-blue opacity-10 rounded-full blur-3xl"
+        className="absolute top-1/4 -left-20 w-96 h-96 bg-neon-blue opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.1, 0.2, 0.1],
@@ -87,7 +87,7 @@ const SkillsSection = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-1/4 -right-20 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl"
+        className="absolute bottom-1/4 -right-20 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           scale: [1.2, 1, 1.2],
           opacity: [0.1, 0.2, 0.1],

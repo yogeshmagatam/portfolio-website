@@ -100,7 +100,7 @@ const Contact = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-pink-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden">
       {/* Animated Background Elements - Neon Theme */}
       <motion.div
-        className="absolute top-20 right-10 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl"
+        className="absolute top-20 right-10 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           x: [0, -100, 0],
           y: [0, 50, 0],
@@ -113,7 +113,7 @@ const Contact = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-20 left-10 w-96 h-96 bg-neon-pink opacity-10 rounded-full blur-3xl"
+        className="absolute bottom-20 left-10 w-96 h-96 bg-neon-pink opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
@@ -126,7 +126,7 @@ const Contact = () => {
         }}
       />
       <motion.div
-        className="absolute top-1/2 right-1/4 w-80 h-80 bg-neon-cyan opacity-10 rounded-full blur-3xl"
+        className="absolute top-1/2 right-1/4 w-80 h-80 bg-neon-cyan opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           x: [0, -60, 0],
           y: [0, 40, 0],

@@ -38,12 +38,6 @@ const TimelineItem = ({ data, index, type }) => {
           ) : (
             <p className="text-gray-400 mb-4">{data.description}</p>
           )}
-          {data.gpa && (
-            <div className={`mb-4 flex items-center gap-1 ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
-              <span className="text-xs text-gray-500 font-mono">GPA:</span>
-              <span className="text-sm text-neon-cyan font-bold font-mono">{data.gpa}</span>
-            </div>
-          )}
           {data.technologies && (
             <div className={`flex flex-wrap gap-2 ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
               {data.technologies.map((tech) => (
@@ -101,21 +95,7 @@ const Timeline = () => {
       title: 'B. Tech in Computer Science & Engineering',
       organization: 'Holy Mary Institute of Technology and Science, Telangana',
       description: 'Focused on full-stack software development, data structures, algorithms, databases, and AI-powered application architecture.',
-      gpa: '7.0'
-    },
-    {
-      period: 'May 2022',
-      title: 'Intermediate (MPC)',
-      organization: 'Narayana Junior College, Telangana',
-      description: 'Mathematics, Physics, and Chemistry stream foundational analytical studies.',
-      gpa: '6.9'
-    },
-    {
-      period: 'March 2020',
-      title: 'High School (SSC)',
-      organization: 'New Little Lilly High School, Telangana',
-      description: 'Secondary School Certificate foundational studies.',
-      gpa: '9.2'
+      technologies: ['Computer Science', 'Software Engineering', 'Data Structures & Algorithms', 'Databases']
     }
   ];
 
@@ -123,7 +103,7 @@ const Timeline = () => {
     <section className="py-20 relative overflow-hidden bg-dark-900">
       {/* Background Effects */}
       <motion.div
-        className="absolute top-0 left-1/2 w-96 h-96 bg-neon-purple opacity-5 rounded-full blur-3xl"
+        className="absolute top-0 left-1/2 w-96 h-96 bg-neon-purple opacity-5 rounded-full blur-3xl pointer-events-none"
         animate={{
           y: [0, 100, 0],
           scale: [1, 1.3, 1],

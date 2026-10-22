@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { HiExternalLink, HiCode, HiSearch } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
@@ -140,7 +141,7 @@ const Projects = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden">
       {/* Animated Background Elements - Neon Theme */}
       <motion.div
-        className="absolute top-20 left-10 w-96 h-96 bg-neon-blue opacity-10 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-96 h-96 bg-neon-blue opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
@@ -153,7 +154,7 @@ const Projects = () => {
         }}
       />
       <motion.div
-        className="absolute top-40 right-20 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl"
+        className="absolute top-40 right-20 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           x: [0, -80, 0],
           y: [0, 60, 0],
@@ -166,7 +167,7 @@ const Projects = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-40 left-1/4 w-72 h-72 bg-neon-cyan opacity-10 rounded-full blur-3xl"
+        className="absolute bottom-40 left-1/4 w-72 h-72 bg-neon-cyan opacity-10 rounded-full blur-3xl pointer-events-none"
         animate={{
           x: [0, 60, 0],
           y: [0, -40, 0],
@@ -353,19 +354,19 @@ const Projects = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-primary-600 text-white">
-        <div className="container text-center">
-          <h2 className="text-white mb-6">Interested in Working Together?</h2>
+      <section className="section-padding bg-primary-600 text-white relative z-10 overflow-hidden">
+        <div className="container text-center relative z-10">
+          <h2 className="text-white mb-6 text-3xl md:text-4xl font-bold">Interested in Working Together?</h2>
           <p className="text-primary-100 mb-8 max-w-2xl mx-auto text-lg">
             I'm always open to discussing new opportunities and exciting projects. 
             Let's create something amazing together!
           </p>
-          <a
-            href="/contact"
-            className="bg-white text-primary-600 px-8 py-4 rounded-lg font-medium hover:bg-primary-50 transition-colors inline-block"
+          <Link
+            to="/contact"
+            className="inline-block bg-white text-primary-600 font-semibold px-8 py-4 rounded-lg hover:bg-primary-50 transition-all shadow-lg hover:shadow-xl hover:scale-105 cursor-pointer relative z-20"
           >
             Get In Touch
-          </a>
+          </Link>
         </div>
       </section>
     </div>
